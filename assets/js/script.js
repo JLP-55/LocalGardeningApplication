@@ -2,16 +2,18 @@ var apiKey = "sk-fKLP65a1e36e3cacb3763";
 var getApiKey = "https://perenual.com/api/species-list?key=" + apiKey;
 var userInput = document.getElementById("user-input");
 var searchBtn = document.getElementById("search-button");
-// var parametersBtn = document.getElementById("parameter-button");
-var index = 0;
+// var parametersBtn = document.getElementById("parameters-button");
 var appendParameters = document.getElementById("user-selection-div");
 
+var parametersCheck = document.body.children[1].children[1].children;
+console.log(parametersCheck);
 
 // Currently unable to get the var keyWord to take the value from userInput.
 // var keyWord =  "https://perenual.com/api/species-list?key=" + apiKey + "&q=" + userInput.value;
 // var keyWord =  `https://perenual.com/api/species-list?key=${apiKey}&q=${userInput.value}`;
 
-var keyWord =  "https://perenual.com/api/species-list?key=" + apiKey + "";
+var keyWord =  "https://perenual.com/api/species-list?key=" + apiKey;
+var keyWordUserSearch = "&q=";
 
 // This is the section of code responsible for the generation of the parameters buttons.
 for (var i = 0; i < parametersArray.length; i++) {
@@ -32,14 +34,15 @@ for (var i = 0; i < parametersArray.length; i++) {
 // This function handles the logic related to the parameters buttons.
 function userParameters (event) {
     var parametersInput = event.target.textContent;
+    console.log(parametersInput);
+    console.log(parametersBtn.getAttribute("id"));
 
     if (parametersInput === parametersBtn.getAttribute("id")) {
-        // console.log("hello");
-        console.log(parametersArray[2].content);
+        keyWord = keyWord + parametersArray[2].indoor;
+        console.log("it worked");
     };
 
-    keyWord = keyWord + parametersArray[2].indoor;
-    console.log(parametersInput);
+    // console.log(parametersInput);
     console.log(keyWord);
 };
 
@@ -63,13 +66,15 @@ function callParameters (event) {
     this.addEventListener("click", addLocalStorage());
 };
 
-// for (var i = 0; i < parametersArray.length; i++) {
-//     console.log(parametersArray[i]);
-//     // var getApiKeyPlus = getApiKey + parametersArray[i];
-// };
-
 // This function handles the api call.
 function searchDatabase () {
+    // Checks to see if the textbox is empty or not so as to add the user imput to the api query.
+    // How do you remove spaces in the user input? .trim()? It's not working
+    if (userInput.value !== "") {
+        keyWord = keyWord.concat(keyWordUserSearch).concat(userInput.value.trim());
+        console.log(keyWord);
+        // console.log(userInput.value);
+    };
     fetch(keyWord)
         .then(function (response) {
             return response.json();
