@@ -1,11 +1,11 @@
 var parametersArray = [{
-    edible: "&edible=1",
+    addToParameters: "&edible=1",
     content: ["Edible"],
 }, {
-    poisonous: "&poisonous=1",
+    addToParameters: "&poisonous=1",
     content: ["Poisonous"],
 }, {
-    indoor: "&indoor=1",
+    addToParameters: "&indoor=1",
     content: ["Indoor"],
 },];
 

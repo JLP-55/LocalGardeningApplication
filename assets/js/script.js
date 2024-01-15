@@ -34,13 +34,22 @@ for (var i = 0; i < parametersArray.length; i++) {
 // This function handles the logic related to the parameters buttons.
 function userParameters (event) {
     var parametersInput = event.target.textContent;
-    console.log(parametersInput);
-    console.log(parametersBtn.getAttribute("id"));
+    // console.log(parametersInput);
+    // console.log(parametersBtn.getAttribute("id"));
 
-    if (parametersInput === parametersBtn.getAttribute("id")) {
-        keyWord = keyWord + parametersArray[2].indoor;
-        console.log("it worked");
+    // This for loop will add the user input into the api query for all the parameters buttons.
+    for (var i = 0; i < parametersArray.length; i++) {
+        // console.log(parametersArray[i].content);
+        // The parametersInpur variable must have a loose equality to the content variable of whatever index the for loop is currently iterating through in the parameters array.
+        if (parametersInput == parametersArray[i].content) {
+            keyWord = keyWord + parametersArray[i].addToParameters;
+        };
     };
+
+    // if (parametersInput === parametersBtn.getAttribute("id", "Poisonous")) {
+    //     keyWord = keyWord + parametersArray[2].addToParameters;
+    //     console.log("it worked");
+    // };
 
     // console.log(parametersInput);
     console.log(keyWord);
