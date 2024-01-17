@@ -3,7 +3,6 @@ var getApiKey = "https://perenual.com/api/species-list?key=" + apiKey;
 var userInput = document.getElementById("user-input");
 var searchBtn = document.getElementById("search-button");
 var appendParameters = document.getElementById("parameters-boolean-values");
-// var trialAppend = document.getElementById("remove");
 
 var parametersBtnSunlight = document.getElementById("Sunlight");
 parametersBtnSunlight.addEventListener("click", parametersArrayContentPlus);
@@ -74,7 +73,7 @@ function userParameters (event) {
     var parametersInput = event.target.textContent;
 
     // This for loop will add the user input into the api query for all the parameters buttons with boolean values.
-    for (var i = 0; i < parametersArray.length; i++) {
+    for (let i = 0; i < parametersArray.length; i++) {
         // console.log(parametersArray[i].content);
         // The parametersInput variable must have a loose equality to the content variable of whatever index the for loop is currently iterating through in the parameters array.
         if (parametersInput == parametersArray[i].content) {
@@ -124,6 +123,11 @@ function wateringParametersAdd (event) {
 
 // This function handles the api call.
 function searchDatabase () {
+    // Clears the four values buttons from the screen.
+    document.getElementById("four-values-append-sunlight").innerHTML = "";
+    document.getElementById("four-values-append-cycle").innerHTML = "";
+    document.getElementById("four-values-append-watering").innerHTML = "";
+
     // Checks to see if the textbox is empty or not so as to add the user imput to the api query.
     // How do you remove spaces in the user input? .trim()? It's not working
     if (userInput.value !== "") {
@@ -136,8 +140,84 @@ function searchDatabase () {
             return response.json();
         })
         .then(function (data) {
+            console.log(data)
             // console.log(data.data[1]);
-            console.log(data);
+
+            var renderList = data.data;
+            var appendSearchItems = document.getElementById("append-search-items");
+            var appendSearchItemsBtn = document.getElementById("append-search-items-button");
+
+            // try to generate buttons to scroll through all pages that have been searched.
+            var allPages = data.last_page;
+            var pageBtnArray = [];
+            JSON.stringify(pageBtnArray);
+            pageBtnArray.push(data.last_page);
+            console.log(pageBtnArray);
+            console.log(data.last_page);
+
+            // Renders searched items to the page
+            for (let i = 0; i < renderList.length; i++) {
+                var listItem = data.data[i].common_name;
+                var appendData = document.createElement("a");
+                appendData.setAttribute("href", "./plant_items.html");
+                appendData.textContent = listItem;
+                appendSearchItems.appendChild(appendData);
+            };
+
+            // Creates a button for every page available to scroll through.
+            if (data.last_page <= 1) {
+                return;
+            } else  if (data.last_page <= 10) {
+                for (let i = 1; i <= allPages; i++) {
+                    var pageBtn = document.createElement("button");
+                    pageBtn.textContent = [i];
+                    appendSearchItemsBtn.appendChild(pageBtn);
+                    pageBtn.addEventListener("click", changePage);
+                };
+            } else if (data.last_page > 10) {
+                var pageBtnMinus = document.createElement("button");
+                pageBtnMinus.textContent = "-";
+                appendSearchItemsBtn.appendChild(pageBtnMinus);
+                pageBtnMinus.addEventListener("click", pageDown);
+
+                for (let i = 1; i <= 10; i++) {
+                    var pageBtn = document.createElement("button");
+                    pageBtn.textContent = [i];
+                    appendSearchItemsBtn.appendChild(pageBtn);
+                    pageBtn.addEventListener("click", changePage);    
+                };
+
+                var pageBtnPlus = document.createElement("button");
+                pageBtnPlus.textContent = "+";
+                appendSearchItemsBtn.appendChild(pageBtnPlus);
+                pageBtnPlus.addEventListener("click", pageUp);
+
+            };
+
+            // Function to change the page
+            // Must somehow keep the api query the same but switch out the values for the page number, ie; &page=3
+            function changePage (event) {
+                console.log(keyWord);
+                console.log(event.target.textContent);
+                var pageNum = event.target.textContent;
+            };
+
+            // Function to increase page buttons shown by 10.
+            function pageUp () {
+
+            };
+
+            // Function to decrease page buttons shown by 10.
+            function pageDown () {
+
+            };
+            
+            // Generates an image of the clicked plant.
+            // var displayImg = document.createElement("img");
+            // var targetImg = data.data[0].default_image.small_url;
+            // displayImg.setAttribute("src", targetImg);
+            // appendSearchItems.appendChild(displayImg);
+
         });
         console.log(keyWord);
         // console.log(userInput.value);

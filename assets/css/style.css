@@ -6,63 +6,88 @@
     margin: 5px;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 #search-section {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 25%;
+}
+
+#search-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 90px;
 }
 
 #user-selection {
-    height: 200px;
-    width:  250px;
     display: flex;
     flex-direction: column;
     line-height: 50px;
+    height: 200px;
+    width:  250px;
+}
+
+p {
+    display: flex;
+    justify-content: center;
 }
 
 #parameters-boolean-values {
     display: flex;
     flex-direction: row;
-    position: relative;
-    left: 220px;
-    bottom: 36px;
+    justify-content: center;
 }
 
 #parameters-four-values {
     display: flex;
-    flex-direction: row;
-    position: relative;
-    left: 220px;
-    bottom: 36px;
+    flex-direction: column;
 }
 
 .all-parameters {
     display: flex;
     justify-content: center; 
     align-items: center; 
-    height: 25px; 
+    height: 35px; 
     width: 75px;
 }
 
 #four-values-append-sunlight {
     visibility: hidden;
-    position: relative;
-    left: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #four-values-append-cycle {
     visibility: hidden;
-    position: relative;
-    left: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #four-values-append-watering {
     visibility: hidden;
-    position: relative;
-    left: 410px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-#remove {
-    position: relative;
-    top: 400px;
+a {
+    display:flex;
+    justify-content: center;
+}
+
+#append-search-items-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 button:focus {
