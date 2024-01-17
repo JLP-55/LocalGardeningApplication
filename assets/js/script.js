@@ -123,18 +123,38 @@ function wateringParametersAdd (event) {
 
 // This function handles the api call.
 function searchDatabase () {
-    // Clears the four values buttons from the screen.
+
+    // work on lines 128 - 135
+    console.log(userInput.value);
+    console.log(keyWord);
+    console.log(keyWordUserSearch);
+
+    // This if statement is attempting to reset the page only when the user is searching for something new after already previously searching something.
+    // if (keyWord === "https://perenual.com/api/species-list?key=" + apiKey && userInput !== "") {
+    //     var keyWord =  "https://perenual.com/api/species-list?key=" + apiKey;
+    // };
+
+    // Puts the variable "keyWord" into local storage.
+    localStorage.setItem("key-word", JSON.stringify(keyWord));
+    console.log(keyWord);
+    
+    // Clears all previously rendered html elements from the screen.
+    document.getElementById("append-search-items").innerHTML = "";
+    document.getElementById("append-search-items-button").innerHTML = "";
     document.getElementById("four-values-append-sunlight").innerHTML = "";
     document.getElementById("four-values-append-cycle").innerHTML = "";
     document.getElementById("four-values-append-watering").innerHTML = "";
-
+    
     // Checks to see if the textbox is empty or not so as to add the user imput to the api query.
-    // How do you remove spaces in the user input? .trim()? It's not working
     if (userInput.value !== "") {
-        keyWord = keyWord.concat(keyWordUserSearch).concat(userInput.value.trim());
+        keyWord = keyWord.concat(keyWordUserSearch).concat(userInput.value.trim().toLowerCase());
+        // Puts the variable "keyWord" into local storage with userInput.value attached.
+        localStorage.setItem("key-word", JSON.stringify(keyWord));
         console.log(keyWord);
-        // console.log(userInput.value);
+        userInput.value = "";
+        console.log(userInput.value);
     };
+
     fetch(keyWord)
         .then(function (response) {
             return response.json();
@@ -144,8 +164,10 @@ function searchDatabase () {
             // console.log(data.data[1]);
 
             var renderList = data.data;
+            console.log(renderList);
             var appendSearchItems = document.getElementById("append-search-items");
             var appendSearchItemsBtn = document.getElementById("append-search-items-button");
+            var appendSearchItemsBtnMore = document.getElementById("append-search-items-button-more");
 
             // try to generate buttons to scroll through all pages that have been searched.
             var allPages = data.last_page;
@@ -160,6 +182,7 @@ function searchDatabase () {
                 var listItem = data.data[i].common_name;
                 var appendData = document.createElement("a");
                 appendData.setAttribute("href", "./plant_items.html");
+                appendData.addEventListener("click", localStoragePlus);
                 appendData.textContent = listItem;
                 appendSearchItems.appendChild(appendData);
             };
@@ -171,24 +194,36 @@ function searchDatabase () {
                 for (let i = 1; i <= allPages; i++) {
                     var pageBtn = document.createElement("button");
                     pageBtn.textContent = [i];
+                    pageBtn.setAttribute("id", "page-button");
                     appendSearchItemsBtn.appendChild(pageBtn);
                     pageBtn.addEventListener("click", changePage);
                 };
             } else if (data.last_page > 10) {
                 var pageBtnMinus = document.createElement("button");
                 pageBtnMinus.textContent = "-";
+                pageBtnMinus.setAttribute("id", "page-button-minus");
                 appendSearchItemsBtn.appendChild(pageBtnMinus);
                 pageBtnMinus.addEventListener("click", pageDown);
 
                 for (let i = 1; i <= 10; i++) {
                     var pageBtn = document.createElement("button");
                     pageBtn.textContent = [i];
+                    pageBtn.setAttribute("id", "page-button");
                     appendSearchItemsBtn.appendChild(pageBtn);
+                    pageBtn.addEventListener("click", changePage);    
+                };
+
+                for (let i = 11; i <= 20; i++) {
+                    var pageBtn = document.createElement("button");
+                    pageBtn.textContent = [i];
+                    pageBtn.setAttribute("id", "page-button");
+                    appendSearchItemsBtnMore.appendChild(pageBtn);
                     pageBtn.addEventListener("click", changePage);    
                 };
 
                 var pageBtnPlus = document.createElement("button");
                 pageBtnPlus.textContent = "+";
+                pageBtnPlus.setAttribute("id", "page-button-plus");
                 appendSearchItemsBtn.appendChild(pageBtnPlus);
                 pageBtnPlus.addEventListener("click", pageUp);
 
@@ -197,26 +232,36 @@ function searchDatabase () {
             // Function to change the page
             // Must somehow keep the api query the same but switch out the values for the page number, ie; &page=3
             function changePage (event) {
-                console.log(keyWord);
                 console.log(event.target.textContent);
                 var pageNum = event.target.textContent;
+                keyWord = keyWord + "&page=" + pageNum;
+                appendSearchItems.innerHTML = "";
+                appendSearchItemsBtn.innerHTML = "";
+                console.log(keyWord);
+                searchDatabase();
             };
 
             // Function to increase page buttons shown by 10.
             function pageUp () {
-
+                
             };
 
             // Function to decrease page buttons shown by 10.
             function pageDown () {
 
             };
-            
-            // Generates an image of the clicked plant.
-            // var displayImg = document.createElement("img");
-            // var targetImg = data.data[0].default_image.small_url;
-            // displayImg.setAttribute("src", targetImg);
-            // appendSearchItems.appendChild(displayImg);
+
+            // Saves the plant item the user clicked on to local storage.
+            function localStoragePlus (event) {
+                var plantItemAdd = event.target.textContent;
+                for (let i = 0; i < renderList.length; i++) {
+                    if ( plantItemAdd == data.data[i].common_name) {
+                        var plantItemClicked = data.data[i].id;
+                        var keyWordPlantItem = `https://perenual.com/api/species/details/${plantItemClicked}?key=${apiKey}`;
+                        localStorage.setItem("key-word-item-clicked", JSON.stringify(keyWordPlantItem));
+                    };
+                };
+            };
 
         });
         console.log(keyWord);
