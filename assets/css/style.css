@@ -10,6 +10,30 @@
     display: flex;
 }
 
+#user-selection {
+    height: 200px;
+    width:  250px;
+    display: flex;
+    flex-direction: column;
+    line-height: 50px;
+}
+
+#parameters-boolean-values {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    left: 220px;
+    bottom: 36px;
+}
+
+#parameters-four-values {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    left: 220px;
+    bottom: 36px;
+}
+
 .all-parameters {
     display: flex;
     justify-content: center; 
@@ -18,7 +42,30 @@
     width: 75px;
 }
 
+#four-values-append-sunlight {
+    visibility: hidden;
+    position: relative;
+    left: 150px;
+}
+
+#four-values-append-cycle {
+    visibility: hidden;
+    position: relative;
+    left: 280px;
+}
+
+#four-values-append-watering {
+    visibility: hidden;
+    position: relative;
+    left: 410px;
+}
+
 #remove {
     position: relative;
     top: 400px;
+}
+
+button:focus {
+  outline: none;
+  border-color: #8ac4ff;
 }
