@@ -1,24 +1,179 @@
 :root {
-    --header: red;
+  --header: red;
 }
 
 * {
-    margin: 5px;
+  margin: 5px;
 }
 
 #search-section {
-    display: flex;
+  display: flex;
 }
 
 .all-parameters {
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    height: 25px; 
-    width: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+  width: 75px;
 }
 
 #remove {
-    position: relative;
-    top: 400px;
+  position: relative;
+  top: 400px;
+}
+
+body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: black;
+  background-color: white;
+  line-height: 1.5;
+}
+
+header {
+  padding-left: 35%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  background-color: black;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+nav a {
+  text-decoration: none;
+  padding: 5px;
+  color: lightgreen;
+  margin-right: 10px;
+  transition: all 0.25s ease-in;
+  font-size: 1.4rem;
+}
+
+nav a:hover {
+  background-size: 100%;
+  color: darkgreen;
+}
+
+.logo-banner {
+  background-image: url("../images/1\ -\ Logo.jpg");
+  object-fit: fill;
+  display: flex;
+  background-repeat: no-repeat;
+  height: 300px;
+}
+
+.page-wrapper {
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-section {
+  margin: 25px 0;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.page-section>h1 {
+  flex: 0 0 20%;
+  text-align: right;
+  padding-right: 15px;
+  font-size: 2.5vw;
+  color: darkgreen;
+}
+
+.page-section>div {
+  flex: 0 0 77%;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.flex-item {
+  border: 5px solid lightgreen;
+  border-radius: 25px;
+  min-height: 370px;
+  flex-basis: 100%;
+  display: flex;
+  background-blend-mode: soft-light;
+  transition: all 0.5s;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+/* hover over card images */
+.flex-item:hover {
+  background-color: darkslategrey;
+}
+
+/* card images */
+.schedule {
+  background-image: url("../images/2\ -\ Schedule\ image.jpg");
+}
+
+.plant {
+  background-image: url("../images/3\ -\ Planting\ image.jpg");
+}
+
+.weather {
+  background-image: url("../images/4\ -\ Weather\ Image.jpg");
+}
+
+.footer address {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}
+
+.footer address a {
+  color: darkgreen;
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-style: normal;
+  background-size: 100% 0.2em;
+  background-position: bottom;
+  transition: all 0.25s ease-in;
+  margin: 0 0.2rem 0.1rem;
+  display: inline-block;
+}
+
+.footer address a:hover {
+  background-size: 100% 88%;
+  color: lightgreen;
+}
+
+@media screen and (max-width: 980px) {
+  header {
+    padding: 0 0 10px 0;
+    justify-content: center;
+    text-align: center;
+  }
+
+  header nav {
+    justify-content: center;
+  }
+
+  .page-section > h1,
+  .page-section > div {
+    flex: 0 0 100%;
+  }
+
+  .page-section > h1 {
+    border-bottom: 4px solid darkgreen;
+    text-align: center;
+    font-size: 5vw;
+  }
 }
