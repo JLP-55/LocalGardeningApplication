@@ -2,6 +2,7 @@ var apiKey = "sk-fKLP65a1e36e3cacb3763";
 var getApiKey = "https://perenual.com/api/species-list?key=" + apiKey;
 var userInput = document.getElementById("user-input");
 var searchBtn = document.getElementById("search-button");
+var clearSearchedItems = document.getElementById("clear-searched-items");
 var appendParameters = document.getElementById("parameters-boolean-values");
 
 var parametersBtnSunlight = document.getElementById("Sunlight");
@@ -13,6 +14,11 @@ parametersBtnWatering.addEventListener("click", parametersArrayContentPlus);
 
 var keyWord =  "https://perenual.com/api/species-list?key=" + apiKey;
 var keyWordUserSearch = "&q=";
+
+// If the variable "keyWord" has not taken any user input this if statement will hide the "clear search items" button.
+if (keyWord === "https://perenual.com/api/species-list?key=" + apiKey) {
+    clearSearchedItems.setAttribute("style", "visibility:hidden;");
+};
 
 // This is the section of code relevant to the parameters buttons with boolean values.
 // Sets attribute and adds event listener.
@@ -43,7 +49,7 @@ function parametersArrayContentPlus (event) {
             parametersBtnSunlightApiAdd.setAttribute("id", parametersArraySunlight[3].contentPlus[i]);
             document.getElementById("four-values-append-sunlight").appendChild(parametersBtnSunlightApiAdd);
             parametersBtnSunlightApiAdd.addEventListener("click", sunlightParametersAdd);
-            document.getElementById("four-values-append-sunlight").setAttribute("style", "visibility: visible;")
+            document.getElementById("four-values-append-sunlight").setAttribute("style", "visibility: visible;");
         };
     } else if (parametersBtnCycle == event.target.textContent) {
         for (let i = 0; i < 4; i++) {
@@ -53,7 +59,7 @@ function parametersArrayContentPlus (event) {
             parametersBtnCycleApiAdd.setAttribute("id", parametersArrayCycle[3].contentPlus[i]);
             document.getElementById("four-values-append-cycle").appendChild(parametersBtnCycleApiAdd);
             parametersBtnCycleApiAdd.addEventListener("click", cycleParametersAdd);
-            document.getElementById("four-values-append-cycle").setAttribute("style", "visibility: visible;")
+            document.getElementById("four-values-append-cycle").setAttribute("style", "visibility: visible;");
         };
     } else if (parametersBtnWatering == event.target.textContent) {
         for (let i = 0; i < 4; i++) {
@@ -63,7 +69,7 @@ function parametersArrayContentPlus (event) {
             parametersBtnWateringApiAdd.setAttribute("id", parametersArrayWatering[3].contentPlus[i]);
             document.getElementById("four-values-append-watering").appendChild(parametersBtnWateringApiAdd);
             parametersBtnWateringApiAdd.addEventListener("click", wateringParametersAdd);
-            document.getElementById("four-values-append-watering").setAttribute("style", "visibility: visible;")
+            document.getElementById("four-values-append-watering").setAttribute("style", "visibility: visible;");
         };
     };
 };
@@ -74,7 +80,6 @@ function userParameters (event) {
 
     // This for loop will add the user input into the api query for all the parameters buttons with boolean values.
     for (let i = 0; i < parametersArray.length; i++) {
-        // console.log(parametersArray[i].content);
         // The parametersInput variable must have a loose equality to the content variable of whatever index the for loop is currently iterating through in the parameters array.
         if (parametersInput == parametersArray[i].content) {
             keyWord = keyWord + parametersArray[i].addToParameters;
@@ -124,23 +129,13 @@ function wateringParametersAdd (event) {
 // This function handles the api call.
 function searchDatabase () {
 
-    // work on lines 128 - 135
-    console.log(userInput.value);
-    console.log(keyWord);
-    console.log(keyWordUserSearch);
-
-    // This if statement is attempting to reset the page only when the user is searching for something new after already previously searching something.
-    // if (keyWord === "https://perenual.com/api/species-list?key=" + apiKey && userInput !== "") {
-    //     var keyWord =  "https://perenual.com/api/species-list?key=" + apiKey;
-    // };
-
     // Puts the variable "keyWord" into local storage.
     localStorage.setItem("key-word", JSON.stringify(keyWord));
-    console.log(keyWord);
     
     // Clears all previously rendered html elements from the screen.
     document.getElementById("append-search-items").innerHTML = "";
     document.getElementById("append-search-items-button").innerHTML = "";
+    document.getElementById("append-search-items-button-more").innerHTML = "";
     document.getElementById("four-values-append-sunlight").innerHTML = "";
     document.getElementById("four-values-append-cycle").innerHTML = "";
     document.getElementById("four-values-append-watering").innerHTML = "";
@@ -155,27 +150,26 @@ function searchDatabase () {
         console.log(userInput.value);
     };
 
+    // This if statement will show the button to clear search items as well as hide all other search related content, only if the api key has taken user input.
+    if (keyWord !== "https://perenual.com/api/species-list?key=" + apiKey) {
+        clearSearchedItems.setAttribute("style", "visibility:visible;");
+        searchBtn.setAttribute("style", "display:none;");
+        clearSearchedItems.addEventListener("click", clearSearchedItemsFunction);
+        document.getElementById("user-selection").setAttribute("style", "display:none;");
+    };
+
     fetch(keyWord)
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
             console.log(data)
-            // console.log(data.data[1]);
 
+            // Variables relevant to content generated by the api response.
             var renderList = data.data;
-            console.log(renderList);
             var appendSearchItems = document.getElementById("append-search-items");
             var appendSearchItemsBtn = document.getElementById("append-search-items-button");
             var appendSearchItemsBtnMore = document.getElementById("append-search-items-button-more");
-
-            // try to generate buttons to scroll through all pages that have been searched.
-            var allPages = data.last_page;
-            var pageBtnArray = [];
-            JSON.stringify(pageBtnArray);
-            pageBtnArray.push(data.last_page);
-            console.log(pageBtnArray);
-            console.log(data.last_page);
 
             // Renders searched items to the page
             for (let i = 0; i < renderList.length; i++) {
@@ -229,8 +223,7 @@ function searchDatabase () {
 
             };
 
-            // Function to change the page
-            // Must somehow keep the api query the same but switch out the values for the page number, ie; &page=3
+            // Function to change the page.
             function changePage (event) {
                 console.log(event.target.textContent);
                 var pageNum = event.target.textContent;
@@ -263,10 +256,13 @@ function searchDatabase () {
                 };
             };
 
+            
         });
-        console.log(keyWord);
-        // console.log(userInput.value);
+
+        // Clears the previously searched items from the page.
+        function clearSearchedItemsFunction () {
+            window.location.reload();
+        };
 };
   
-// parametersBtn.addEventListener("click", callParameters);
 searchBtn.addEventListener("click", searchDatabase);

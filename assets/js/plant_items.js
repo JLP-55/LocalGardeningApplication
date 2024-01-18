@@ -10,10 +10,24 @@ function renderUserInput () {
             console.log(data);
 
             // Generates an image of the clicked plant.
-            var displayImg = document.createElement("img");
-            var targetImg = data.default_image.small_url;
-            displayImg.setAttribute("src", targetImg);
-            appendIndividualSearchItems.appendChild(displayImg);
+            if (data.default_image !== null) {
+                var displayImg = document.createElement("img");
+                var targetImg = data.default_image.small_url;
+                displayImg.setAttribute("src", targetImg);
+                appendIndividualSearchItems.appendChild(displayImg);
+            };
+
+            // Generates plant name.
+            var appendCommonName = document.createElement("h5");
+            var commonName = (data.common_name);
+            appendCommonName.textContent = commonName;
+            appendIndividualSearchItems.appendChild(appendCommonName);
+
+            // Generates plant description.
+            var appendPlantDescription = document.createElement("p");
+            var PlantDescription = data.description;
+            appendPlantDescription.textContent = PlantDescription;
+            appendIndividualSearchItems.appendChild(appendPlantDescription);
         });
 };
 
