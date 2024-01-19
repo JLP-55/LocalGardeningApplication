@@ -26,6 +26,10 @@ body {
     width: 90px;
 }
 
+#search-text {
+    display: flex;
+}
+
 #user-selection {
     display: flex;
     flex-direction: column;
