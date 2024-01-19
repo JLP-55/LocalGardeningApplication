@@ -74,7 +74,6 @@ function parametersArrayContentPlus (event) {
     };   
 };
 
-
 // This function handles the logic related to the parameters buttons with boolean values.
 function userParameters (event) {
     var parametersInput = event.target.textContent;
