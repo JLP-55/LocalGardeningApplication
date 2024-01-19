@@ -1,129 +1,4 @@
-:root {
-  --header: red;
-}
-
-* {
-  margin: 5px;
-}
-
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#search-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 15%;
-}
-
-#search-button {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 90px;
-}
-
-#search-text {
-    display: flex;
-}
-
-#user-selection {
-    display: flex;
-    flex-direction: column;
-    line-height: 50px;
-    height: 200px;
-    width:  250px;
-}
-
-p {
-    display: flex;
-    justify-content: center;
-}
-
-#parameters-boolean-values {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-#parameters-four-values {
-    display: flex;
-    flex-direction: column;
-}
-
-.all-parameters {
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    height: 35px; 
-    width: 75px;
-}
-
-#four-values-append-sunlight {
-    visibility: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#four-values-append-cycle {
-    visibility: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#four-values-append-watering {
-    visibility: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-a {
-    display:flex;
-    justify-content: center;
-}
-
-#append-search-items-button {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-#append-search-items-button-more {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: -36px;
-}
-
-#page-button {
-    display: flex;
-    justify-content: center;
-    height: 22px;
-    width: 22px;
-}
-
-#page-button-minus {
-    height: 56px;
-    width: 22px;
-}
-
-#page-button-plus {
-    height: 56px;
-    width: 22px;
-}
-
-button:focus {
-  outline: none;
-  border-color: #8ac4ff;
-}
-
-/* body {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   color: black;
   background-color: white;
@@ -210,15 +85,15 @@ nav a:hover {
   transition: all 0.5s;
   background-repeat: no-repeat;
   background-size: 100%;
-} */
+}
 
 /* hover over card images */
-/* .flex-item:hover {
+.flex-item:hover {
   background-color: darkslategrey;
-} */
+}
 
 /* card images */
-/* .schedule {
+.schedule {
   background-image: url("../images/2\ -\ Schedule\ image.jpg");
 }
 
@@ -276,4 +151,4 @@ nav a:hover {
     text-align: center;
     font-size: 5vw;
   }
-} */
+}
