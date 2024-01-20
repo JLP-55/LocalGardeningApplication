@@ -122,3 +122,45 @@ button:focus {
     outline: none;
     border-color: #8ac4ff;
 }
+
+/* Content relevant to the styling of the plant_items page */
+
+#append-plant-statistics {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: -25%;
+    margin-right: -30%;
+    height: auto;
+    width: 500px;
+}
+
+#h2-center {
+    display: flex;
+}
+
+#append-individual-search-items {
+    margin-top: 50px;
+}
+
+#append-user-selected-plant-items {
+    /* position: absolute; */
+    /* z-index: 9; */
+    background-color: #f1f1f1;
+    border: 1px solid #d3d3d3;
+    text-align: center;
+}
+
+.display-individual-plant-item {
+    /* padding: 10px; */
+    /* cursor: move; */
+    /* z-index: 10; */
+    background-color: #2196F3;
+    color: #fff;
+}
+
+@media screen and (max-width: 1500px) {
+    #append-individual-search-items {
+        margin-top: -100px;
+    }
+}

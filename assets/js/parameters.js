@@ -20,7 +20,7 @@ var parametersArraySunlight = [{
 }, {
     content: ["Sunlight"],
 }, {
-    content: ["Sunlight"],
+    // content: ["Sunlight"],
 }, {
     contentPlus: ["Full sun", "Medium to full sun", "Part shade", "Full shade" ],
 }];
@@ -36,7 +36,7 @@ var parametersArrayCycle = [{
 }, {
     content: ["Cycle"],
 }, {
-    content: ["Cycle"],
+    // content: ["Cycle"],
 }, {
     contentPlus: ["annual", "biannual", "perennial", "biennial",]
 }];
@@ -52,7 +52,7 @@ var parametersArrayWatering = [{
 }, {
     content: ["Watering"],
 }, {
-    content: ["Watering"],
+    // content: ["Watering"],
 }, {
     contentPlus: ["Frequent", "Average", "Minimum", "None",],
 }];
