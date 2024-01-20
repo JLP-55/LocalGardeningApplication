@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Super Rad API</title>
+    <!-- link to Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                screens: {
+                    xs: '300px',
+                    sm: '480px',
+                    md: '768px',
+                    lg: '976px',
+                    xl: '1440px',
+                },
+            }
+        }
+    </script>
+</head>
+
+<body class="font-sans">
+    <!-- logo -->
+    <img src="./assets/images/2-Schedule.jpg" alt="Gardening tools" class="w-2/5 mx-auto"></img>
+    <!-- navbar -->
+    <nav class="w-4/5 mx-auto p-1 flex justify-center space-x-4 bg-black rounded-lg">
+        <a class="text-xl font-medium text-green-300 hover:text-emerald-600 ease-in duration-300" href="#about">About
+            Us</a>
+        <a class="text-xl font-medium text-green-300 hover:text-emerald-600 ease-in duration-300"
+            href="#schedule">Schedule</a>
+        <a class="text-xl font-medium text-green-300 hover:text-emerald-600 ease-in duration-300" href="#plant">What to
+            Plant</a>
+        <a class="text-xl font-medium text-green-300 hover:text-emerald-600 ease-in duration-300"
+            href="#weather">Weather</a>
+    </nav>
+
+    <form class="w-2/5 mx-auto my-1 p-1 flex border-4 rounded-lg border-emerald-600 bg-green-300">
+        <input placeholder="Search Bar"
+            class="mx-auto p-1 w-3/5 border-2 rounded-lg border-emerald-600 text-centre font-light"></input>
+        <button
+            class="mx-auto text-xl font-medium p-2 rounded-lg bg-emerald-600 hover:shadow-2xl ease-in duration-300">Enter</button>
+    </form>
+
+    <!-- main content -->
+    <main class="w-4/5 mx-auto mt-20">
+        <!-- about us -->
+        <section class="flex flex-wrap" id="about">
+            <h1 class="basis-1/4 pl-10 text-3xl font-medium text-emerald-600">Search Results</h1>
+            <div>
+                <p>X</p>
+            </div>
+        </section>
+
+        <section class="flex flex-wrap mt-20" id="about">
+            <h1 class="basis-1/4 pl-10 text-3xl font-medium text-emerald-600">Calendar</h1>
+            <div>
+                <p>X</p>
+            </div>
+        </section>
+
+        <!-- footer -->
+        <footer class="p-3 flex justify-center space-x-8 mt-10">
+            <a href="#about"
+                class="p-1 rounded-lg text-2xl text-emerald-600 hover:bg-green-300 ease-in duration-300">About Us</a>
+            <!-- input useful link -->
+            <a href="#"
+                class="p-1 rounded-lg text-2xl text-emerald-600 hover:bg-green-300 ease-in duration-300">Links</a>
+            <!-- link to google doc presentation -->
+            <a href="#" class="p-1 rounded-lg text-2xl text-emerald-600 hover:bg-green-300 ease-in duration-300">More
+                Information</a>
+        </footer>
+    </main>
+</body>
+
+</html>
