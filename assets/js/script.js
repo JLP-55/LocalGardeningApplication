@@ -23,9 +23,16 @@ if (keyWord === "https://perenual.com/api/species-list?key=" + apiKey) {
 // This is the section of code relevant to the parameters buttons with boolean values.
 // Sets attribute and adds event listener.
 for (let i = 0; i < parametersArray.length; i++) {
+    // Content for the button.
     var parametersBtnBoolean = document.body.children[1].children[1].children[i];
     parametersBtnBoolean.setAttribute("id", parametersArray[i].content);
     parametersBtnBoolean.addEventListener("click", userParameters);
+
+    // // Content for the icon.
+    // var icon = document.createElement("i");
+    // icon.setAttribute("class", "fa-solid fa-circle-plus")
+    // icon.addEventListener("click", userParameters);
+    // parametersBtnBoolean.appendChild(icon);
 };
 
 // Use this function to generate all of the "four values" buttons.
@@ -50,6 +57,11 @@ function parametersArrayContentPlus (event) {
             document.getElementById("four-values-append-sunlight").appendChild(parametersBtnSunlightApiAdd);
             parametersBtnSunlightApiAdd.addEventListener("click", sunlightParametersAdd);
             document.getElementById("four-values-append-sunlight").setAttribute("style", "visibility: visible;");
+
+            // // Creates and appends the plus icon.
+            // var iconAppend = document.createElement("i");
+            // iconAppend.setAttribute("class", "fa-solid fa-circle-plus");
+            // parametersBtnSunlightApiAdd.appendChild(iconAppend);
         };
     } else if (parametersBtnCycle == event.target.textContent) {
         for (let i = 0; i < 4; i++) {
@@ -60,6 +72,11 @@ function parametersArrayContentPlus (event) {
             document.getElementById("four-values-append-cycle").appendChild(parametersBtnCycleApiAdd);
             parametersBtnCycleApiAdd.addEventListener("click", cycleParametersAdd);
             document.getElementById("four-values-append-cycle").setAttribute("style", "visibility: visible;");
+
+            // // Creates and appends the plus icon.
+            // var iconAppend = document.createElement("i");
+            // iconAppend.setAttribute("class", "fa-solid fa-circle-plus");
+            // parametersBtnCycleApiAdd.appendChild(iconAppend);
         };
     } else if (parametersBtnWatering == event.target.textContent) {
         for (let i = 0; i < 4; i++) {
@@ -70,6 +87,11 @@ function parametersArrayContentPlus (event) {
             document.getElementById("four-values-append-watering").appendChild(parametersBtnWateringApiAdd);
             parametersBtnWateringApiAdd.addEventListener("click", wateringParametersAdd);
             document.getElementById("four-values-append-watering").setAttribute("style", "visibility: visible;");
+
+            // // Creates and appends the plus icon.
+            // var iconAppend = document.createElement("i");
+            // iconAppend.setAttribute("class", "fa-solid fa-circle-plus");
+            // parametersBtnWateringApiAdd.appendChild(iconAppend);
         };
     };   
 };
@@ -83,6 +105,10 @@ function userParameters (event) {
         // The parametersInput variable must have a loose equality to the content variable of whatever index the for loop is currently iterating through in the parameters array.
         if (parametersInput == parametersArray[i].content) {
             keyWord = keyWord + parametersArray[i].addToParameters;
+            document.body.children[1].children[1].children[i].setAttribute("style", "outline:none; border-color: #8ac4ff;");
+
+            // // Styles the icon.
+            // document.body.children[1].children[1].children[i].children[0].setAttribute("class", "fa-solid fa-circle-check");
         };
     };
 
@@ -93,10 +119,14 @@ function userParameters (event) {
 // Add the "sunlight" search parameters to the variable keyword.
 function sunlightParametersAdd (event) {
     var userParameters = event.target.textContent;
+    var userParametersIcon = event.target;
+    
     console.log(userParameters);
     for (let i = 0; i < parametersArraySunlight.length; i++) {
         if (userParameters == parametersArraySunlight[3].contentPlus[i]) {
             keyWord = keyWord + parametersArraySunlight[0].addToParameters[i];
+            userParametersIcon.setAttribute("style", "outline:none; border-color: #8ac4ff;");
+
             console.log(keyWord);
         };
     };
@@ -105,10 +135,14 @@ function sunlightParametersAdd (event) {
 // Add the "cycle" search parameters to the variable keyword.
 function cycleParametersAdd (event) {
     var userParameters = event.target.textContent;
+    var userParametersIcon = event.target;
+
     console.log(userParameters);
     for (let i = 0; i < parametersArrayCycle.length; i++) {
         if (userParameters == parametersArrayCycle[3].contentPlus[i]) {
             keyWord = keyWord + parametersArrayCycle[0].addToParameters[i];
+            userParametersIcon.setAttribute("style", "outline:none; border-color: #8ac4ff;");
+
             console.log(keyWord);
         };
     };
@@ -117,10 +151,14 @@ function cycleParametersAdd (event) {
 // Add the "watering" search parameters to the variable keyword.
 function wateringParametersAdd (event) {
     var userParameters = event.target.textContent;
+    var userParametersIcon = event.target;
+
     console.log(userParameters);
     for (let i = 0; i < parametersArrayWatering.length; i++) {
         if (userParameters == parametersArrayWatering[3].contentPlus[i]) {
             keyWord = keyWord + parametersArrayWatering[0].addToParameters[i];
+            userParametersIcon.setAttribute("style", "outline:none; border-color: #8ac4ff;");
+
             console.log(keyWord);
         };
     };
@@ -130,7 +168,7 @@ function wateringParametersAdd (event) {
 function searchDatabase () {
 
     // Puts the variable "keyWord" into local storage.
-    localStorage.setItem("key-word", JSON.stringify(keyWord));
+    sessionStorage.setItem("key-word", JSON.stringify(keyWord));
     
     // Clears all previously rendered html elements from the screen.
     document.getElementById("append-search-items").innerHTML = "";
@@ -140,11 +178,11 @@ function searchDatabase () {
     document.getElementById("four-values-append-cycle").innerHTML = "";
     document.getElementById("four-values-append-watering").innerHTML = "";
     
-    // Checks to see if the textbox is empty or not so as to add the user imput to the api query.
+    // Checks to see if the textbox is empty or not so as to add the user input to the api query.
     if (userInput.value !== "") {
         keyWord = keyWord.concat(keyWordUserSearch).concat(userInput.value.trim().toLowerCase().replaceAll(" ","_"));
         // Puts the variable "keyWord" into local storage with userInput.value attached.
-        localStorage.setItem("key-word", JSON.stringify(keyWord));
+        sessionStorage.setItem("key-word", JSON.stringify(keyWord));
         console.log(keyWord);
         userInput.value = "";
     };
@@ -268,16 +306,21 @@ function searchDatabase () {
         // Clears the previously searched items from the page.
         function clearSearchedItemsFunction () {
             window.location.reload();
-            localStorage.removeItem("key-word");
+            sessionStorage.removeItem("key-word");
         };
 };
 
 // Displays previously searched items so long as there is a value in local storage.
-if (JSON.parse(localStorage.getItem("key-word")) !== null) {
-    var displaySearchedItems = JSON.parse(localStorage.getItem("key-word"));
+if (JSON.parse(sessionStorage.getItem("key-word")) !== null) {
+    var displaySearchedItems = JSON.parse(sessionStorage.getItem("key-word"));
     keyWord = displaySearchedItems;
 
     searchDatabase();
 };
   
 searchBtn.addEventListener("click", searchDatabase);
+userInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        searchDatabase();
+    };
+} );
