@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Super Rad API</title>
+    <!-- link to Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                screens: {
+                    xs: '300px',
+                    sm: '480px',
+                    md: '768px',
+                    lg: '976px',
+                    xl: '1440px',
+                },
+            }
+        }
+    </script>
+</head>
+
+<body class="font-sans">
+    <!-- logo -->
+    <img src="./assets/images/1-Logo.jpg" alt="Super Rad API Logo"></img>
+    <!-- geolocation input -->
+    <form class="w-4/5 mx-auto my-20 p-20 flex border-4 rounded-lg border-emerald-600 bg-green-300">
+        <label class="text-xl font-medium">Please enter your location here:
+            <input class="p-2 border-2 rounded-lg border-emerald-600 text-centre font-light"></input>
+        </label>
+        <button
+            class="text-xl font-medium ml-10 p-2 rounded-lg bg-emerald-600 hover:shadow-2xl ease-in duration-300">Enter</button>
+    </form>
+</body>
+
+</html>
