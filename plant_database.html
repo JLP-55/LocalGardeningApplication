@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Plant Database</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" type="text/css" href="./assets/css/plant_style.css">
+</head>
+<body>
+    <section id="search-section">
+        <p id="search-text">Enter a single key word relevant to your search</p>
+        <textarea id="user-input"></textarea>
+        <button id="search-button">Search</button>
+        <button id="clear-searched-items">Clear searched items</button>
+    </section>
+    
+    <section id="user-selection">
+        <p>Select search parameters</p>
+        <div id="parameters-boolean-values">
+            <button>Edible</button>
+            <button>Poisonous</button>
+            <button>Indoor</button>
+        </div>
+        <div id="parameters-four-values">
+            <button id="Sunlight">Sunlight</button>
+            <div id="four-values-append-sunlight"></div>
+            <button id="Cycle">Cycle</button>
+            <div id="four-values-append-cycle"></div>
+            <button id="Watering">Watering</button>
+            <div id="four-values-append-watering"></div>
+        </div>
+    </section>
+    
+
+    <section id="append-search-items"></section>
+    <section id="append-search-items-button"></section>
+    <section id="append-search-items-button-more"></section>
+
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <script src="./assets/js/parameters.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <!-- <script src="https://kit.fontawesome.com/a2cd91e69e.js" crossorigin="anonymous"></script> -->
+</body>
+</html>
