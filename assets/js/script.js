@@ -105,6 +105,7 @@ function userParameters (event) {
         // The parametersInput variable must have a loose equality to the content variable of whatever index the for loop is currently iterating through in the parameters array.
         if (parametersInput == parametersArray[i].content) {
             keyWord = keyWord + parametersArray[i].addToParameters;
+            // Dynamic styling for button
             document.body.children[1].children[1].children[i].setAttribute("style", "outline:none; border-color: #8ac4ff;");
 
             // // Styles the icon.
@@ -125,6 +126,8 @@ function sunlightParametersAdd (event) {
     for (let i = 0; i < parametersArraySunlight.length; i++) {
         if (userParameters == parametersArraySunlight[3].contentPlus[i]) {
             keyWord = keyWord + parametersArraySunlight[0].addToParameters[i];
+
+            // Dynamic styling for the button
             userParametersIcon.setAttribute("style", "outline:none; border-color: #8ac4ff;");
 
             console.log(keyWord);
@@ -141,6 +144,8 @@ function cycleParametersAdd (event) {
     for (let i = 0; i < parametersArrayCycle.length; i++) {
         if (userParameters == parametersArrayCycle[3].contentPlus[i]) {
             keyWord = keyWord + parametersArrayCycle[0].addToParameters[i];
+
+            // Dynamic styling for the button
             userParametersIcon.setAttribute("style", "outline:none; border-color: #8ac4ff;");
 
             console.log(keyWord);
@@ -157,6 +162,8 @@ function wateringParametersAdd (event) {
     for (let i = 0; i < parametersArrayWatering.length; i++) {
         if (userParameters == parametersArrayWatering[3].contentPlus[i]) {
             keyWord = keyWord + parametersArrayWatering[0].addToParameters[i];
+
+            // Dynamic styling for the button
             userParametersIcon.setAttribute("style", "outline:none; border-color: #8ac4ff;");
 
             console.log(keyWord);
@@ -177,7 +184,7 @@ function searchDatabase () {
     document.getElementById("four-values-append-sunlight").innerHTML = "";
     document.getElementById("four-values-append-cycle").innerHTML = "";
     document.getElementById("four-values-append-watering").innerHTML = "";
-    
+
     // Checks to see if the textbox is empty or not so as to add the user input to the api query.
     if (userInput.value !== "") {
         keyWord = keyWord.concat(keyWordUserSearch).concat(userInput.value.trim().toLowerCase().replaceAll(" ","_"));
@@ -217,7 +224,7 @@ function searchDatabase () {
                 appendSearchItems.textContent = "Nothing met your search requirements";
             };
 
-            // Renders searched items to the page
+            // Renders searched items to the page.
             for (let i = 0; i < renderList.length; i++) {
                 var listItem = data.data[i].common_name;
                 var appendData = document.createElement("a");
@@ -228,66 +235,70 @@ function searchDatabase () {
             };
 
             // Creates a button for every page available to scroll through.
-            if (allPages <= 1) {
-                return;
-            } else  if (allPages <= 10) {
-                for (let i = 1; i <= allPages; i++) {
-                    var pageBtn = document.createElement("button");
-                    pageBtn.textContent = [i];
-                    pageBtn.setAttribute("id", "page-button");
-                    appendSearchItemsBtn.appendChild(pageBtn);
-                    pageBtn.addEventListener("click", changePage);
+            function generatePageButtons () {
+                if (allPages <= 1) {
+                    return;
+                } else  if (allPages <= 10) {
+                    for (let i = 1; i <= allPages; i++) {
+                        var pageBtn = document.createElement("button");
+                        pageBtn.textContent = [i];
+                        pageBtn.setAttribute("id", "page-button");
+                        appendSearchItemsBtn.appendChild(pageBtn);
+                        pageBtn.addEventListener("click", changePage);
+                    };
+                } else if (allPages > 10) {
+                    var pageBtnMinus = document.createElement("button");
+                    pageBtnMinus.textContent = "-";
+                    pageBtnMinus.setAttribute("id", "page-button-minus");
+                    appendSearchItemsBtn.appendChild(pageBtnMinus);
+                    pageBtnMinus.addEventListener("click", pageDown);
+    
+                    for (let i = 1; i <= 10; i++) {
+                        var pageBtn = document.createElement("button");
+                        pageBtn.textContent = [i];
+                        pageBtn.setAttribute("id", "page-button");
+                        appendSearchItemsBtn.appendChild(pageBtn);
+                        pageBtn.addEventListener("click", changePage);
+                    };
+    
+                    for (let i = 11; i <= 20; i++) {
+                        var pageBtn = document.createElement("button");
+                        pageBtn.textContent = [i];
+                        pageBtn.setAttribute("id", "page-button");
+                        appendSearchItemsBtnMore.appendChild(pageBtn);
+                        pageBtn.addEventListener("click", changePage);    
+                    };
+    
+                    var pageBtnPlus = document.createElement("button");
+                    pageBtnPlus.textContent = "+";
+                    pageBtnPlus.setAttribute("id", "page-button-plus");
+                    appendSearchItemsBtn.appendChild(pageBtnPlus);
+                    pageBtnPlus.addEventListener("click", pageUp);
+    
                 };
-            } else if (allPages > 10) {
-                var pageBtnMinus = document.createElement("button");
-                pageBtnMinus.textContent = "-";
-                pageBtnMinus.setAttribute("id", "page-button-minus");
-                appendSearchItemsBtn.appendChild(pageBtnMinus);
-                pageBtnMinus.addEventListener("click", pageDown);
 
-                for (let i = 1; i <= 10; i++) {
-                    var pageBtn = document.createElement("button");
-                    pageBtn.textContent = [i];
-                    pageBtn.setAttribute("id", "page-button");
-                    appendSearchItemsBtn.appendChild(pageBtn);
-                    pageBtn.addEventListener("click", changePage);    
+                // Function to increase page buttons shown by 10.
+                function pageUp () {
+
                 };
 
-                for (let i = 11; i <= 20; i++) {
-                    var pageBtn = document.createElement("button");
-                    pageBtn.textContent = [i];
-                    pageBtn.setAttribute("id", "page-button");
-                    appendSearchItemsBtnMore.appendChild(pageBtn);
-                    pageBtn.addEventListener("click", changePage);    
+                // Function to decrease page buttons shown by 10.
+                function pageDown () {
+                    
                 };
-
-                var pageBtnPlus = document.createElement("button");
-                pageBtnPlus.textContent = "+";
-                pageBtnPlus.setAttribute("id", "page-button-plus");
-                appendSearchItemsBtn.appendChild(pageBtnPlus);
-                pageBtnPlus.addEventListener("click", pageUp);
-
+            
             };
 
             // Function to change the page.
             function changePage (event) {
-                console.log(event.target.textContent);
+                // Clears the value of keyWordUserSearch so that it cannot reset the users search input
+                keyWordUserSearch = "";
                 var pageNum = event.target.textContent;
                 keyWord = keyWord + "&page=" + pageNum;
                 appendSearchItems.innerHTML = "";
                 appendSearchItemsBtn.innerHTML = "";
                 console.log(keyWord);
                 searchDatabase();
-            };
-
-            // Function to increase page buttons shown by 10.
-            function pageUp () {
-                
-            };
-
-            // Function to decrease page buttons shown by 10.
-            function pageDown () {
-
             };
 
             // Saves the plant item the user clicked on to local storage.
@@ -301,6 +312,9 @@ function searchDatabase () {
                     };
                 };
             };  
+
+            generatePageButtons();
+
         });
 
         // Clears the previously searched items from the page.

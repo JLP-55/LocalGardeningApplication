@@ -295,6 +295,12 @@ function renderUserInput () {
                     displayPlantItem.textContent = data.common_name;
                     appendUserSelectedPlantItems.appendChild(displayPlantItem);
                     saveToPlantingListBtn.removeEventListener("click", renderSavedPlantItemsUponClick);
+
+                    // // Draggable code for plant items.
+                    // displayPlantItem.setAttribute("draggable", draggable = true);
+                    // displayPlantItem.addEventListener("dragstart", function (event) {
+                    //     console.log(event);
+                    // });
                 });
             };
 
@@ -315,7 +321,14 @@ function renderUserInput () {
                         displayPlantItem.setAttribute("class", "display-individual-plant-item");
                         displayPlantItem.textContent = data.common_name;
                         appendUserSelectedPlantItems.appendChild(displayPlantItem);
+                        
+                        // // Draggable code for plant items.
+                        // displayPlantItem.setAttribute("draggable", draggable = true);
+                        // displayPlantItem.addEventListener("dragstart", function (event) {
+                        //     console.log(event);
+                        // });
                     });
+
                 };
             };
 
