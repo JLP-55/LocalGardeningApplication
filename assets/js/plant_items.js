@@ -67,28 +67,28 @@ function renderUserInput () {
             };
 
             if (data.care_level != null || data.care_level != undefined) {
-                var appendCareLevel = document.createElement("p");
+                var appendCareLevel = document.createElement("li");
                 var careLevel = data.care_level;
                 appendCareLevel.textContent = "Care level: " + careLevel;
                 appendPlantStatistics.appendChild(appendCareLevel);
             };
 
             if (data.cycle != null || data.cycle != undefined) {
-                var appendCycle = document.createElement("p");
+                var appendCycle = document.createElement("li");
                 var cycle = data.cycle;
                 appendCycle.textContent = "Cycle: " + cycle;
                 appendPlantStatistics.appendChild(appendCycle);
             };
 
             if (data.dimension != null || data.dimension != undefined) {
-                var appendDimension = document.createElement("p");
+                var appendDimension = document.createElement("li");
                 var dimension = data.dimension;
                 appendDimension.textContent = "Plant dimensions: " + dimension;
                 appendPlantStatistics.appendChild(appendDimension);
             };
 
             if (data.drought_tolerant != null || data.drought_tolerant != undefined) {
-                var appendDroughtTolerant = document.createElement("p");
+                var appendDroughtTolerant = document.createElement("li");
                 var droughtTolerant = data.drought_tolerant;
                 if (droughtTolerant === 0 || droughtTolerant === false) {
                     appendDroughtTolerant.textContent = "This plant is not drought tolerant"
@@ -99,14 +99,14 @@ function renderUserInput () {
             };
 
             if (data.fruits != null || data.fruits != undefined) {
-                var appendFruits = document.createElement("p");
+                var appendFruits = document.createElement("li");
                 var fruits = data.fruits;
                 appendFruits.textContent = "Produce fruits: " + fruits;
                 appendPlantStatistics.appendChild(appendFruits);
             };
 
             if (data.edible_fruit != null || data.edible_fruit != undefined) {
-                var appendEdibleFruit = document.createElement("p");
+                var appendEdibleFruit = document.createElement("li");
                 var edibleFruit = data.edible_fruit;
                 if (edibleFruit === 0 || edibleFruit === false) {
                     appendEdibleFruit.textContent = "Fruits are inedible";
@@ -117,28 +117,28 @@ function renderUserInput () {
             };
 
             if (data.flowering_season != null || data.flowering_season != undefined) {
-                var appendFloweringSeason = document.createElement("p");
+                var appendFloweringSeason = document.createElement("li");
                 var floweringSeason = data.flowering_season;
                 appendFloweringSeason.textContent = "Flowering season: " + floweringSeason;
                 appendPlantStatistics.appendChild(appendFloweringSeason);
             };
 
             if (data.growth_rate != null || data.growth_rate != undefined) {
-                var appendGrowthRate = document.createElement("p");
+                var appendGrowthRate = document.createElement("li");
                 var growthRate = data.growth_rate;
                 appendGrowthRate.textContent = "Growth rate: " + growthRate;
                 appendPlantStatistics.appendChild(appendGrowthRate);
             };
 
             if (data.harvest_season != null || data.harvest_season != undefined) {
-                var appendHarvestSeason = document.createElement("p");
+                var appendHarvestSeason = document.createElement("li");
                 var harvestSeason = data.harvest_season;
                 appendHarvestSeason.textContent = "Harvest season: " + harvestSeason;
                 appendPlantStatistics.appendChild(appendHarvestSeason);
             };
 
             if (data.indoor != null || data.indoor != undefined) {
-                var appendIndoor = document.createElement("p");
+                var appendIndoor = document.createElement("li");
                 var indoor = data.indoor;
                 if (indoor === 0 || indoor === false) {
                     appendIndoor.textContent = "This is not an indoor plant";
@@ -149,14 +149,14 @@ function renderUserInput () {
             };
 
             if (data.maintenance != null || data.maintenance != undefined) {
-                var appendMaintenance = document.createElement("p");
+                var appendMaintenance = document.createElement("li");
                 var maintenance = data.maintenance;
                 appendMaintenance.textContent = "Maintenance level: " + maintenance;
                 appendPlantStatistics.appendChild(appendMaintenance);
             };
 
             if (data.medicinal != null || data.medicinal != undefined) {
-                var appendMedicinal = document.createElement("p");
+                var appendMedicinal = document.createElement("li");
                 var medicinal = data.medicinal;
                 if (medicinal === 0 || medicinal === false) {
                     appendMedicinal.textContent = "This plant has no known medicinal purposes";
@@ -167,7 +167,7 @@ function renderUserInput () {
             };
 
             if (data.poisonous_to_humans != null || data.poisonous_to_humans != undefined) {
-                var appendPoisonousToHumans = document.createElement("p");
+                var appendPoisonousToHumans = document.createElement("li");
                 var poisonousToHumans = data.poisonous_to_humans;
                 if (poisonousToHumans == 0 || poisonousToHumans == false) {
                     appendPoisonousToHumans.textContent = "This plant is not poisonous to humans" ;
@@ -178,7 +178,7 @@ function renderUserInput () {
             };
 
             if (data.poisonous_to_pets != null || data.poisonous_to_pets != undefined) {
-                var appendPoisonousToPets = document.createElement("p");
+                var appendPoisonousToPets = document.createElement("li");
                 var poisonousToPets = data.poisonous_to_pets;
                 if (poisonousToPets == 0 || poisonousToPets == false) {
                     appendPoisonousToPets.textContent = "This plant is not poisonous to pets" ;
