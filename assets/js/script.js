@@ -3,7 +3,14 @@ var getApiKey = "https://perenual.com/api/species-list?key=" + apiKey;
 var userInput = document.getElementById("user-input");
 var searchBtn = document.getElementById("search-button");
 var clearSearchedItems = document.getElementById("clear-searched-items");
-var appendParameters = document.getElementById("parameters-boolean-values");
+
+// Set variables for boolean value buttons, calling the userParameters function when clicked
+var parametersBtnEdible = document.getElementById("Edible");
+parametersBtnEdible.addEventListener("click", userParameters);
+var parametersBtnPoisonous = document.getElementById("Poisonous");
+parametersBtnPoisonous.addEventListener("click", userParameters);
+var parametersBtnIndoor = document.getElementById("Indoor");
+parametersBtnIndoor.addEventListener("click", userParameters);
 
 var parametersBtnSunlight = document.getElementById("Sunlight");
 parametersBtnSunlight.addEventListener("click", parametersArrayContentPlus);
@@ -18,21 +25,6 @@ var keyWordUserSearch = "&q=";
 // If the variable "keyWord" has not taken any user input this if statement will hide the "clear search items" button.
 if (keyWord === "https://perenual.com/api/species-list?key=" + apiKey) {
     clearSearchedItems.setAttribute("style", "visibility:hidden;");
-};
-
-// This is the section of code relevant to the parameters buttons with boolean values.
-// Sets attribute and adds event listener.
-for (let i = 0; i < parametersArray.length; i++) {
-    // Content for the button.
-    var parametersBtnBoolean = document.body.children[1].children[1].children[i];
-    parametersBtnBoolean.setAttribute("id", parametersArray[i].content);
-    parametersBtnBoolean.addEventListener("click", userParameters);
-
-    // // Content for the icon.
-    // var icon = document.createElement("i");
-    // icon.setAttribute("class", "fa-solid fa-circle-plus")
-    // icon.addEventListener("click", userParameters);
-    // parametersBtnBoolean.appendChild(icon);
 };
 
 // Use this function to generate all of the "four values" buttons.
@@ -96,22 +88,21 @@ function parametersArrayContentPlus (event) {
     };   
 };
 
-// This function handles the logic related to the parameters buttons with boolean values.
+// This function adds the user input into the api query for all the parameter buttons with boolean values, and adds style to the icons
 function userParameters (event) {
     var parametersInput = event.target.textContent;
-
-    // This for loop will add the user input into the api query for all the parameters buttons with boolean values.
-    for (let i = 0; i < parametersArray.length; i++) {
-        // The parametersInput variable must have a loose equality to the content variable of whatever index the for loop is currently iterating through in the parameters array.
-        if (parametersInput == parametersArray[i].content) {
-            keyWord = keyWord + parametersArray[i].addToParameters;
-            document.body.children[1].children[1].children[i].setAttribute("style", "outline:none; border-color: #8ac4ff;");
-
-            // // Styles the icon.
-            // document.body.children[1].children[1].children[i].children[0].setAttribute("class", "fa-solid fa-circle-check");
-        };
-    };
-
+    
+    switch(parametersInput){
+        case "Edible":
+            keyWord = keyWord + parametersArray[0].addToParameters;
+            parametersBtnEdible.setAttribute("style", "outline:none; border-color: #8ac4ff;");
+        case "Poisonous":
+            keyWord = keyWord + parametersArray[1].addToParameters;
+            parametersBtnPoisonous.setAttribute("style", "outline:none; border-color: #8ac4ff;");
+        case "Indoor":
+            keyWord = keyWord + parametersArray[2].addToParameters;
+            parametersBtnIndoor.setAttribute("style", "outline:none; border-color: #8ac4ff;");
+    }
     console.log(parametersInput);
     console.log(keyWord);
 };
