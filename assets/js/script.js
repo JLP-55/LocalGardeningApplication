@@ -233,11 +233,11 @@ function searchDatabase () {
                     pageBtn.addEventListener("click", changePage);
                 };
             } else if (allPages > 10) {
-                var pageBtnMinus = document.createElement("button");
-                pageBtnMinus.textContent = "-";
-                pageBtnMinus.setAttribute("id", "page-button-minus");
-                appendSearchItemsBtn.appendChild(pageBtnMinus);
-                pageBtnMinus.addEventListener("click", pageDown);
+                // var pageBtnMinus = document.createElement("button");
+                // pageBtnMinus.textContent = "-";
+                // pageBtnMinus.setAttribute("id", "page-button-minus");
+                // appendSearchItemsBtn.appendChild(pageBtnMinus);
+                // pageBtnMinus.addEventListener("click", pageDown);
 
                 for (let i = 1; i <= 10; i++) {
                     var pageBtn = document.createElement("button");
@@ -247,19 +247,19 @@ function searchDatabase () {
                     pageBtn.addEventListener("click", changePage);    
                 };
 
-                for (let i = 11; i <= 20; i++) {
-                    var pageBtn = document.createElement("button");
-                    pageBtn.textContent = [i];
-                    pageBtn.setAttribute("id", "page-button");
-                    appendSearchItemsBtnMore.appendChild(pageBtn);
-                    pageBtn.addEventListener("click", changePage);    
-                };
+                // for (let i = 11; i <= 20; i++) {
+                //     var pageBtn = document.createElement("button");
+                //     pageBtn.textContent = [i];
+                //     pageBtn.setAttribute("id", "page-button");
+                //     appendSearchItemsBtnMore.appendChild(pageBtn);
+                //     pageBtn.addEventListener("click", changePage);    
+                // };
 
-                var pageBtnPlus = document.createElement("button");
-                pageBtnPlus.textContent = "+";
-                pageBtnPlus.setAttribute("id", "page-button-plus");
-                appendSearchItemsBtn.appendChild(pageBtnPlus);
-                pageBtnPlus.addEventListener("click", pageUp);
+                // var pageBtnPlus = document.createElement("button");
+                // pageBtnPlus.textContent = "+";
+                // pageBtnPlus.setAttribute("id", "page-button-plus");
+                // appendSearchItemsBtn.appendChild(pageBtnPlus);
+                // pageBtnPlus.addEventListener("click", pageUp);
 
             };
 
@@ -318,3 +318,5 @@ userInput.addEventListener("keydown", (event) => {
         searchDatabase();
     };
 } );
+
+
