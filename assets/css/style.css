@@ -1,0 +1,66 @@
+h1 {
+    background-color: blue; 
+    color: aliceblue; 
+    text-align: center;
+  }
+    
+  
+  button {        
+      padding-right: 60px;
+      padding-left: 60px;
+     cursor: pointer;
+     width: 350px;   
+      margin: 0 1%;  
+     font-size: 250%;  
+     color: #13293d;    
+      background-color: #24eccb; 
+     border: 3px solid #13293d;  
+    }   
+  body {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.3;
+    }
+   /* header {  */
+    /*  display: flex; */
+     /* justify-content: space-between; */
+     /* align-items: center; */
+     /* padding: 1%; */
+     /* background-color: #13293d;  */
+     /* color: #fff;  */
+    /*}  */
+    button:hover {
+      background-color: #dee6eb;
+      color: #f00f0f;
+    }
+    button:active {
+      /*font-size: 180%; */
+      box-shadow: 0 0 10px #f50606 inset;
+      /*background-color: bisque;*/
+    }
+    button:focus {
+      outline: none;
+      border-color: #8ac4ff;
+    }
+    
+    input {
+    background-color: whitesmoke;
+    border-radius: 3px;
+    border-width: 1px;
+    color: #5f6368;
+    font-size: 1.1em;
+    height: 45px;
+    line-height: 20px;
+    margin: 0;
+    margin-top: 10px;
+    max-width: 100%;
+    padding: 8px 8px 8px 8px;
+    transition-delay: 0s, 0s;
+    transition-duration: 0.2s, 0.2s;
+    transition-property: background-color, color;
+    transition-timing-function: ease, ease;
+    vertical-align: middle;
+    width: 100%;
+  }
+  
+  
