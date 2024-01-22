@@ -23,8 +23,24 @@
     </script>
 </head>
 
-<body class="font-sans bg-green-300 m-1 flex flex-col items-center">
-    <section class="flex flex-col items-center mt-16">
+<body class="font-sans flex flex-col items-center">
+    <!-- logo -->
+    <img src="./assets/images/2-Schedule.jpg" alt="Gardening tools" class="w-2/5 mx-auto rounded-xl"></img>
+    <!-- navbar -->
+    <nav class="w-4/5 mx-auto p-1 flex justify-center space-x-4 bg-black rounded-lg">
+        <a class="text-xl font-medium text-green-300 hover:text-emerald-600 ease-in duration-300"
+            href="file:///C:/Users/abals/Desktop/Gardening_location_based_planter_app/wireframe2.html">About
+            Us</a>
+        <a class="text-xl font-medium text-green-300 hover:text-emerald-600 ease-in duration-300"
+            href="#schedule">Schedule</a>
+        <a class="text-xl font-medium text-green-300 hover:text-emerald-600 ease-in duration-300" href="file:///C:/Users/abals/Desktop/Gardening_location_based_planter_app/plant_database.html">What to
+            Plant</a>
+        <a class="text-xl font-medium text-green-300 hover:text-emerald-600 ease-in duration-300"
+            href="#weather">Weather</a>
+    </nav>
+
+
+    <section class="flex flex-col items-center mt-8">
         <p class="text-xl font-medium text-center">Enter a single key word relevant to your search</p>
         <textarea class="flex my-2 p-1 w-6/12 border-2 rounded-lg border-emerald-600 text-centre font-light"
             id="user-input"></textarea>
@@ -37,18 +53,18 @@
             searched items</button>
     </section>
 
-    <section class="flex flex-col my-16 leading-10" id="user-selection">
+    <section class="flex flex-col leading-10" id="user-selection">
         <p class="flex justify-center text-xl font-medium">Select search parameters</p>
         <div class="flex flex-row justify-center" id="parameters-boolean-values">
             <button
-                class="mx-2 my-2 font-medium p-1 rounded-lg bg-emerald-600 text-white hover:text-green-300 shadow-2xl ease-in duration-300">Edible</button>
+                class="mx-2 my-2 font-medium p-1 rounded-lg bg-emerald-600 text-white hover:text-green-300 shadow-2xl ease-in duration-300" id="Edible">Edible</button>
             <button
-                class="mx-2 my-2 font-medium p-1 rounded-lg bg-emerald-600 text-white hover:text-green-300 shadow-2xl ease-in duration-300">Poisonous</button>
+                class="mx-2 my-2 font-medium p-1 rounded-lg bg-emerald-600 text-white hover:text-green-300 shadow-2xl ease-in duration-300" id="Poisonous">Poisonous</button>
             <button
-                class="mx-2 my-2 font-medium p-1 rounded-lg bg-emerald-600 text-white hover:text-green-300 shadow-2xl ease-in duration-300">Indoor</button>
+                class="mx-2 my-2 font-medium p-1 rounded-lg bg-emerald-600 text-white hover:text-green-300 shadow-2xl ease-in duration-300" id="Indoor">Indoor</button>
         </div>
 
-        <div class="flex flex-col">
+        <div class="flex flex-col mb-8">
             <button
                 class="mx-2 my-2 font-medium rounded-lg bg-emerald-600 text-white hover:text-green-300 shadow-2xl ease-in duration-300"
                 id="Sunlight">Sunlight</button>
@@ -68,6 +84,17 @@
     <section class="font-medium" id="append-search-items"></section>
     <section class="flex flex-row justify-center" id="append-search-items-button"></section>
     <section class="flex flex-row justify-center -mt-8" id="append-search-items-button-more"></section>
+
+    <!-- footer -->
+    <footer class="p-3 flex justify-center space-x-8 mt-10">
+        <a href="file:///C:/Users/abals/Desktop/Gardening_location_based_planter_app/wireframe2.html" class="p-1 rounded-lg text-2xl text-emerald-600 hover:bg-green-300 ease-in duration-300">About
+            Us</a>
+        <!-- input useful link -->
+        <a href="#" class="p-1 rounded-lg text-2xl text-emerald-600 hover:bg-green-300 ease-in duration-300">Links</a>
+        <!-- link to google doc presentation -->
+        <a href="#" class="p-1 rounded-lg text-2xl text-emerald-600 hover:bg-green-300 ease-in duration-300">More
+            Information</a>
+    </footer>
 
     <script src="./assets/js/parameters.js"></script>
     <script src="./assets/js/script.js"></script>
