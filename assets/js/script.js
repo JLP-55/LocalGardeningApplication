@@ -95,13 +95,16 @@ function userParameters (event) {
     switch(parametersInput){
         case "Edible":
             keyWord = keyWord + parametersArray[0].addToParameters;
-            parametersBtnEdible.setAttribute("style", "outline:none; border-color: #8ac4ff;");
+            parametersBtnEdible.setAttribute("style", "background-color:#f5c467;");
+            break;
         case "Poisonous":
             keyWord = keyWord + parametersArray[1].addToParameters;
-            parametersBtnPoisonous.setAttribute("style", "outline:none; border-color: #8ac4ff;");
+            parametersBtnPoisonous.setAttribute("style", "background-color:#f5c467;");
+            break;
         case "Indoor":
             keyWord = keyWord + parametersArray[2].addToParameters;
-            parametersBtnIndoor.setAttribute("style", "outline:none; border-color: #8ac4ff;");
+            parametersBtnIndoor.setAttribute("style", "background-color:#f5c467;");
+            break;
     }
     console.log(parametersInput);
     console.log(keyWord);
@@ -116,7 +119,7 @@ function sunlightParametersAdd (event) {
     for (let i = 0; i < parametersArraySunlight.length; i++) {
         if (userParameters == parametersArraySunlight[3].contentPlus[i]) {
             keyWord = keyWord + parametersArraySunlight[0].addToParameters[i];
-            userParametersIcon.setAttribute("style", "outline:none; border-color: #8ac4ff;");
+            userParametersIcon.setAttribute("style", "border-radius:8px; padding:0px 2px; background-color:#f5c467; color:#fff");
 
             console.log(keyWord);
         };
@@ -132,7 +135,7 @@ function cycleParametersAdd (event) {
     for (let i = 0; i < parametersArrayCycle.length; i++) {
         if (userParameters == parametersArrayCycle[3].contentPlus[i]) {
             keyWord = keyWord + parametersArrayCycle[0].addToParameters[i];
-            userParametersIcon.setAttribute("style", "outline:none; border-color: #8ac4ff;");
+            userParametersIcon.setAttribute("style", "border-radius:8px; padding:0px 2px; background-color:#f5c467; color:#fff");
 
             console.log(keyWord);
         };
@@ -148,7 +151,7 @@ function wateringParametersAdd (event) {
     for (let i = 0; i < parametersArrayWatering.length; i++) {
         if (userParameters == parametersArrayWatering[3].contentPlus[i]) {
             keyWord = keyWord + parametersArrayWatering[0].addToParameters[i];
-            userParametersIcon.setAttribute("style", "outline:none; border-color: #8ac4ff;");
+            userParametersIcon.setAttribute("style", "border-radius:8px; padding:0px 2px; background-color:#f5c467; color:#fff");
 
             console.log(keyWord);
         };

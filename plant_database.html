@@ -29,16 +29,16 @@
     <!-- navbar -->
     <nav class="w-4/5 mx-auto p-1 flex justify-center space-x-4 bg-black rounded-lg">
         <a class="text-xl font-medium text-green-300 hover:text-emerald-600 ease-in duration-300"
-            href="file:///C:/Users/abals/Desktop/Gardening_location_based_planter_app/wireframe2.html">About
+            href="./index.html">About
             Us</a>
         <a class="text-xl font-medium text-green-300 hover:text-emerald-600 ease-in duration-300"
             href="#schedule">Schedule</a>
-        <a class="text-xl font-medium text-green-300 hover:text-emerald-600 ease-in duration-300" href="file:///C:/Users/abals/Desktop/Gardening_location_based_planter_app/plant_database.html">What to
+        <a class="text-xl font-medium text-green-300 hover:text-emerald-600 ease-in duration-300"
+            href="./plant_database.html">What to
             Plant</a>
         <a class="text-xl font-medium text-green-300 hover:text-emerald-600 ease-in duration-300"
             href="#weather">Weather</a>
     </nav>
-
 
     <section class="flex flex-col items-center mt-8">
         <p class="text-xl font-medium text-center">Enter a single key word relevant to your search</p>
@@ -54,47 +54,42 @@
     </section>
 
     <section class="flex flex-col leading-10" id="user-selection">
-        <p class="flex justify-center text-xl font-medium">Select search parameters</p>
+        <p class="flex justify-center text-xl font-medium">Select search parameters (please select only 2 max)</p>
         <div class="flex flex-row justify-center" id="parameters-boolean-values">
             <button
-                class="mx-2 my-2 font-medium p-1 rounded-lg bg-emerald-600 text-white hover:text-green-300 shadow-2xl ease-in duration-300" id="Edible">Edible</button>
+                class="mx-2 my-2 font-medium p-1 rounded-lg bg-emerald-600 text-white hover:text-green-300 shadow-2xl ease-in duration-300"
+                id="Edible">Edible</button>
             <button
-                class="mx-2 my-2 font-medium p-1 rounded-lg bg-emerald-600 text-white hover:text-green-300 shadow-2xl ease-in duration-300" id="Poisonous">Poisonous</button>
+                class="mx-2 my-2 font-medium p-1 rounded-lg bg-emerald-600 text-white hover:text-green-300 shadow-2xl ease-in duration-300"
+                id="Poisonous">Poisonous</button>
             <button
-                class="mx-2 my-2 font-medium p-1 rounded-lg bg-emerald-600 text-white hover:text-green-300 shadow-2xl ease-in duration-300" id="Indoor">Indoor</button>
+                class="mx-2 my-2 font-medium p-1 rounded-lg bg-emerald-600 text-white hover:text-green-300 shadow-2xl ease-in duration-300"
+                id="Indoor">Indoor</button>
         </div>
 
         <div class="flex flex-col mb-8">
             <button
                 class="mx-2 my-2 font-medium rounded-lg bg-emerald-600 text-white hover:text-green-300 shadow-2xl ease-in duration-300"
                 id="Sunlight">Sunlight</button>
-            <div class="invisible flex flex-col items-center font-medium" id="four-values-append-sunlight"></div>
+            <div class="invisible flex flex-col items-center font-medium shadow-2xl space-y-1"
+                id="four-values-append-sunlight"></div>
             <button
                 class="mx-2 my-2 font-medium rounded-lg bg-emerald-600 text-white hover:text-green-300 shadow-2xl ease-in duration-300"
                 id="Cycle">Cycle</button>
-            <div class="invisible flex flex-col items-center font-medium" id="four-values-append-cycle"></div>
+            <div class="invisible flex flex-col items-center font-medium shadow-2xl space-y-1"
+                id="four-values-append-cycle"></div>
             <button
                 class="mx-2 my-2 font-medium rounded-lg bg-emerald-600 text-white hover:text-green-300 shadow-2xl ease-in duration-300"
                 id="Watering">Watering</button>
-            <div class="invisible flex flex-col items-center font-medium" id="four-values-append-watering"></div>
+            <div class="invisible flex flex-col items-center font-medium shadow-2xl space-y-1"
+                id="four-values-append-watering"></div>
         </div>
     </section>
 
-
-    <section class="font-medium" id="append-search-items"></section>
+    <section class="font-medium my-10 inline-grid grid-cols-1 gap-8 underline text-center" id="append-search-items">
+    </section>
     <section class="flex flex-row justify-center" id="append-search-items-button"></section>
-    <section class="flex flex-row justify-center -mt-8" id="append-search-items-button-more"></section>
-
-    <!-- footer -->
-    <footer class="p-3 flex justify-center space-x-8 mt-10">
-        <a href="file:///C:/Users/abals/Desktop/Gardening_location_based_planter_app/wireframe2.html" class="p-1 rounded-lg text-2xl text-emerald-600 hover:bg-green-300 ease-in duration-300">About
-            Us</a>
-        <!-- input useful link -->
-        <a href="#" class="p-1 rounded-lg text-2xl text-emerald-600 hover:bg-green-300 ease-in duration-300">Links</a>
-        <!-- link to google doc presentation -->
-        <a href="#" class="p-1 rounded-lg text-2xl text-emerald-600 hover:bg-green-300 ease-in duration-300">More
-            Information</a>
-    </footer>
+    <section class="flex flex-row justify-center" id="append-search-items-button-more"></section>
 
     <script src="./assets/js/parameters.js"></script>
     <script src="./assets/js/script.js"></script>
