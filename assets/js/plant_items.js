@@ -10,7 +10,8 @@ var saveToPlantingListBtn = document.querySelector("button");
 
 var backBtn = document.createElement("button");
 backBtn.setAttribute("id", "back-button");
-backBtn.setAttribute("style", "position:relative; top: 25px; border: solid; border-radius: 8px; background-color: pink;");
+backBtn.setAttribute("class", "basis-3/4 inline-grid grid-cols-2 list-disc mb-6 border-2 border-emerald-600 rounded-lg bg-green-300 p-2");
+backBtn.setAttribute("style", "position:relative; top: 25px; height:auto; width: 90px; margin-bottom: 50px; border: solid; border-radius: 8px; background-color: pink;");
 backBtn.textContent = "Back";
 document.querySelector("h2").appendChild(backBtn);
 backBtn.addEventListener("click", back);

@@ -265,12 +265,12 @@ function searchDatabase () {
 
             // Function to change the page.
             function changePage (event) {
-                console.log(event.target.textContent);
+                // Clears the value of KeyWordUserSearch so that it cannot reset the users search input.
+                keyWordUserSearch = "";
                 var pageNum = event.target.textContent;
                 keyWord = keyWord + "&page=" + pageNum;
                 appendSearchItems.innerHTML = "";
                 appendSearchItemsBtn.innerHTML = "";
-                console.log(keyWord);
                 searchDatabase();
             };
 
@@ -318,5 +318,3 @@ userInput.addEventListener("keydown", (event) => {
         searchDatabase();
     };
 } );
-
-
