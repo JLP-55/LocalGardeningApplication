@@ -100,7 +100,8 @@ function renderUserInput () {
                 appendPlantStatistics.appendChild(appendEdibleFruit);
             };
 
-            if (data.flowering_season !== null || data.flowering_season !== undefined) {
+            if (data.flowering_season != null || data.flowering_season != undefined) {
+                console.log("not showing flowering");
                 var appendFloweringSeason = document.createElement("p");
                 var floweringSeason = data.flowering_season;
                 appendFloweringSeason.textContent = "Flowering season: " + floweringSeason;

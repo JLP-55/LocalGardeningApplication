@@ -338,3 +338,13 @@ userInput.addEventListener("keydown", (event) => {
         searchDatabase();
     };
 } );
+
+
+// to-do:
+// add content to the search parameters to inform the user of their choices
+// remove event listener from the buttons so the user can only select one search item.
+// try to add icons to the buttons
+// pull main branch into feature to have latest changes
+// Change the name of the app to be shorter
+
+// add colour change functionality to the weather page based on the watering status/rain of each api call
