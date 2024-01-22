@@ -22,6 +22,13 @@ parametersBtnWatering.addEventListener("click", parametersArrayContentPlus);
 var keyWord =  "https://perenual.com/api/species-list?key=" + apiKey;
 var keyWordUserSearch = "&q=";
 
+// Some styling for the content above the text area.
+var userPrompt = document.getElementById("minor-content");
+userPrompt.setAttribute("style", "font-size:12px;");
+// Some styling for the content about the search parameters.
+var additionalSearchParameters = document.getElementById("additional-content");
+additionalSearchParameters.setAttribute("style", "font-size:15px;");
+
 // If the variable "keyWord" has not taken any user input this if statement will hide the "clear search items" button.
 if (keyWord === "https://perenual.com/api/species-list?key=" + apiKey) {
     clearSearchedItems.setAttribute("style", "visibility:hidden;");
