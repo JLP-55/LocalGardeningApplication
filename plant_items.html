@@ -22,23 +22,35 @@
     </script>
 </head>
 
-<body class="font-sans w-3/5 mx-auto mt-20">
+<body class="font-sans items-center">
 
-    <div class="flex flex-wrap">
-        <h2 class="basis-1/4 text-3xl font-medium text-emerald-600">Plant statistics:</h2>
-        <p class="basis-3/4 inline-grid grid-cols-2 list-disc mb-6 border-2 border-emerald-600 rounded-lg bg-green-300 p-2"
-            id="append-plant-statistics"></p>
-    </div>
+    <nav class="p-1 text-center flex justify-center space-x-4 bg-black sm:text-2xl sm:space-x-8">
+        <a class="font-medium text-green-300 hover:text-emerald-600 ease-in duration-300" href="./home.html">Home</a>
+        <a class="font-medium text-green-300 hover:text-emerald-600 ease-in duration-300" href="#schedule">Schedule</a>
+        <a class="font-medium text-green-300 hover:text-emerald-600 ease-in duration-300"
+            href="./plant_database.html">What to
+            Plant</a>
+        <a class="font-medium text-green-300 hover:text-emerald-600 ease-in duration-300" href="#weather">Weather</a>
+    </nav>
 
-    <div class="border-emerald-600 border-2" id="append-individual-search-items"></div>
+    <div class="mx-auto p-2 mt-10 sm:w-3/5">
+        <div class="flex flex-wrap" id="heading">
+            <h1 class="text-center mx-auto text-3xl font-medium text-emerald-600">Plant statistics:</h1>
+            <p class="inline-grid list-disc my-6 border-2 border-emerald-600 rounded-lg bg-green-300 p-2 sm:grid-cols-2 sm:gap-2"
+                id="append-plant-statistics"></p>
+        </div>
 
-    <div class="list-disc" id="append-plant-needs"></div>
+        <div class="border-emerald-600 border-2 rounded-lg p-2" id="append-individual-search-items"></div>
 
-    <button
-        class="mt-4 p-1 rounded-lg border-2 border-emerald-600 text-2xl text-emerald-600 hover:bg-green-300 ease-in duration-300">Save
-        to planting list</button>
+        <div class="list-disc justify-center" id="append-plant-needs"></div>
 
-    <div class="my-4 bg-green-300 border-2 border-emerald-600 text-center w-1/5" id="append-user-selected-plant-items">
+        <button
+            class="my-6 p-1 rounded-lg border-2 border-emerald-600 text-2xl text-emerald-600 hover:bg-green-300 ease-in duration-300 mx-auto align-content">Save
+            to planting list</button>
+
+        <div class="rounded-lg my-4 gap-2 bg-green-300 border-2 border-emerald-600 text-center w-1/2 mx-auto"
+            id="append-user-selected-plant-items">
+        </div>
     </div>
 
     <script src="assets/js/plant_items.js"></script>
