@@ -41,7 +41,7 @@
     </nav>
 
     <section class="flex flex-col items-center mt-8">
-        <p class="text-xl font-medium text-center">Enter a single key word relevant to your search</p>
+        <p class="text-xl font-medium text-center">Enter a single key word relevant to your search<br><span id="user-prompt">It could be something as simple as a fruit, or a season</span></p>
         <textarea class="flex my-2 p-1 w-6/12 border-2 rounded-lg border-emerald-600 text-centre font-light"
             id="user-input"></textarea>
         <button
@@ -54,7 +54,7 @@
     </section>
 
     <section class="flex flex-col leading-10" id="user-selection">
-        <p class="flex justify-center text-xl font-medium">Select search parameters (please select only 2 max)</p>
+        <p class="flex justify-center text-xl font-medium">Select up to two additional search parameters<br><p id="parameters-prompt">To help narrow down your search</p></p>
         <div class="flex flex-row justify-center" id="parameters-boolean-values">
             <button
                 class="mx-2 my-2 font-medium p-1 rounded-lg bg-emerald-600 text-white hover:text-green-300 shadow-2xl ease-in duration-300"
@@ -92,7 +92,7 @@
     <section class="flex flex-row justify-center" id="append-search-items-button-more"></section>
 
     <script src="./assets/js/parameters.js"></script>
-    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/plant_database.js"></script>
     <!-- <script src="https://kit.fontawesome.com/a2cd91e69e.js" crossorigin="anonymous"></script> -->
 </body>
 
