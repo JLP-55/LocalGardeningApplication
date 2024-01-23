@@ -22,13 +22,6 @@ parametersBtnWatering.addEventListener("click", parametersArrayContentPlus);
 var keyWord =  "https://perenual.com/api/species-list?key=" + apiKey;
 var keyWordUserSearch = "&q=";
 
-// Some styling for the content above the text area.
-var userPrompt = document.getElementById("minor-content");
-userPrompt.setAttribute("style", "font-size:12px;");
-// Some styling for the content about the search parameters.
-var additionalSearchParameters = document.getElementById("additional-content");
-additionalSearchParameters.setAttribute("style", "font-size:15px;");
-
 // If the variable "keyWord" has not taken any user input this if statement will hide the "clear search items" button.
 if (keyWord === "https://perenual.com/api/species-list?key=" + apiKey) {
     clearSearchedItems.setAttribute("style", "visibility:hidden;");
@@ -240,11 +233,11 @@ function searchDatabase () {
                     pageBtn.addEventListener("click", changePage);
                 };
             } else if (allPages > 10) {
-                // var pageBtnMinus = document.createElement("button");
-                // pageBtnMinus.textContent = "-";
-                // pageBtnMinus.setAttribute("id", "page-button-minus");
-                // appendSearchItemsBtn.appendChild(pageBtnMinus);
-                // pageBtnMinus.addEventListener("click", pageDown);
+                var pageBtnMinus = document.createElement("button");
+                pageBtnMinus.textContent = "-";
+                pageBtnMinus.setAttribute("id", "page-button-minus");
+                appendSearchItemsBtn.appendChild(pageBtnMinus);
+                pageBtnMinus.addEventListener("click", pageDown);
 
                 for (let i = 1; i <= 10; i++) {
                     var pageBtn = document.createElement("button");
@@ -254,30 +247,30 @@ function searchDatabase () {
                     pageBtn.addEventListener("click", changePage);    
                 };
 
-                // for (let i = 11; i <= 20; i++) {
-                //     var pageBtn = document.createElement("button");
-                //     pageBtn.textContent = [i];
-                //     pageBtn.setAttribute("id", "page-button");
-                //     appendSearchItemsBtnMore.appendChild(pageBtn);
-                //     pageBtn.addEventListener("click", changePage);    
-                // };
+                for (let i = 11; i <= 20; i++) {
+                    var pageBtn = document.createElement("button");
+                    pageBtn.textContent = [i];
+                    pageBtn.setAttribute("id", "page-button");
+                    appendSearchItemsBtnMore.appendChild(pageBtn);
+                    pageBtn.addEventListener("click", changePage);    
+                };
 
-                // var pageBtnPlus = document.createElement("button");
-                // pageBtnPlus.textContent = "+";
-                // pageBtnPlus.setAttribute("id", "page-button-plus");
-                // appendSearchItemsBtn.appendChild(pageBtnPlus);
-                // pageBtnPlus.addEventListener("click", pageUp);
+                var pageBtnPlus = document.createElement("button");
+                pageBtnPlus.textContent = "+";
+                pageBtnPlus.setAttribute("id", "page-button-plus");
+                appendSearchItemsBtn.appendChild(pageBtnPlus);
+                pageBtnPlus.addEventListener("click", pageUp);
 
             };
 
             // Function to change the page.
             function changePage (event) {
-                // Clears the value of KeyWordUserSearch so that it cannot reset the users search input.
-                keyWordUserSearch = "";
+                console.log(event.target.textContent);
                 var pageNum = event.target.textContent;
                 keyWord = keyWord + "&page=" + pageNum;
                 appendSearchItems.innerHTML = "";
                 appendSearchItemsBtn.innerHTML = "";
+                console.log(keyWord);
                 searchDatabase();
             };
 
