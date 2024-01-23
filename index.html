@@ -1,25 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Location based environmental planting web app</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Super Rad API</title>
+    <!-- link to Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                screens: {
+                    xs: '300px',
+                    sm: '480px',
+                    md: '768px',
+                    lg: '976px',
+                    xl: '1440px',
+                },
+            }
+        }
+    </script>
 </head>
-<body>
-    <section id="search-section">
-        <textarea id="user-input"></textarea>
-        <button id="search-button">Search</button>
-        <p id="remove">Opon the console to see functionality</p>
-    </section>
-    
-    <section id="user-selection">
-        <p>Select search parameters</p>
-        <!-- <button id="parameters-button">Show parameters</button> -->
-        <div id="user-selection-div"></div>
-    </section>
-    <script src="./assets/js/parameters.js"></script>
-    <script src="./assets/js/script.js"></script>
+
+<body class="font-sans">
+    <!-- logo -->
+    <img src="./assets/images/1-Logo.jpg" alt="Super Rad API Logo"></img>
+    <!-- navbar -->
+    <nav class="p-3 flex justify-center space-x-8 bg-black xs:space-x-4">
+        <a class="text-2xl font-medium text-green-300 hover:text-emerald-600 ease-in duration-300" href="#about">About
+            Us</a>
+        <a class="text-2xl font-medium text-green-300 hover:text-emerald-600 ease-in duration-300"
+            href="#schedule">Schedule</a>
+        <a class="text-2xl font-medium text-green-300 hover:text-emerald-600 ease-in duration-300" href="#plant">What to
+            Plant</a>
+        <a class="text-2xl font-medium text-green-300 hover:text-emerald-600 ease-in duration-300"
+            href="#weather">Weather</a>
+    </nav>
+
+    <!-- main content -->
+    <main class="w-4/5 mx-auto mt-10">
+        <!-- about us -->
+        <section class="flex flex-wrap" id="about">
+            <h1 class="basis-1/4 pl-10 text-3xl font-medium text-emerald-600">About Us</h1>
+            <div class="basis-3/4">
+                <p>
+                    We help hobby farmers and home gardeners find the information they need on planting in their area
+                    throughout the year. We provide information on what to plant based on the current season where you
+                    live, and weather patterns in that area that may influence your planting decisions. We leverage
+                    information readily available to agribusiness, to help you make decisions on planting at your home.
+                </p>
+            </div>
+        </section>
+
+        <!-- content cards -->
+        <section class="flex flex-wrap">
+            <p class="basis-1/4"></p>
+            <div class="basis-3/5">
+                <!-- schedule -->
+                <a href="#" id="schedule">
+                    <img src="./assets/images/2-Schedule.jpg" alt="Gardening tools"
+                        class="mt-10 flex border-4 rounded-lg border-green-300 hover:border-emerald-600 transition-all duration-300 hover:shadow-2xl"></img>
+                </a>
+                <!-- planting -->
+                <a href="./plant_database.html" id="plant">
+                    <img src="./assets/images/3-Planting.jpg" alt="Hand sewing seeds"
+                        class=" mt-10 flex border-4 rounded-lg border-green-300 hover:border-emerald-600 transition-all duration-300 hover:shadow-2xl"></img>
+                </a>
+                <!-- weather -->
+                <a href="#" id="weather">
+                    <img src="./assets/images/4-Weather.jpg" alt="Watering can and gumboots"
+                        class="mt-10 flex border-4 rounded-lg border-green-300 hover:border-emerald-600 transition-all duration-300 hover:shadow-2xl"></img>
+                </a>
+            </div>
+        </section>
+
+        <!-- footer -->
+        <footer class="p-3 flex justify-center space-x-8 mt-10">
+            <a href="#about"
+                class="p-1 rounded-lg text-2xl text-emerald-600 hover:bg-green-300 ease-in duration-300">About Us</a>
+            <!-- link to google doc presentation -->
+            <a href="#" class="p-1 rounded-lg text-2xl text-emerald-600 hover:bg-green-300 ease-in duration-300">More
+                Information</a>
+        </footer>
+    </main>
 </body>
 </html>
