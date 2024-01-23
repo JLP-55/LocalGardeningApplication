@@ -23,10 +23,31 @@ function get_weather_api() {
         response.json().then(function (data) {
          console.log(data);
 
+         document.getElementById("weather-forecast").innerHTML = "";
+
+         var cityName = document.createElement("h3");
+         cityName.textContent = "Showing forecast for: " + data.city.name;
+         document.getElementById("weather-forecast").appendChild(cityName);
+
+
          // Creates a content for all items iterated over in data.list
-         for (let i = 0; i < data.list.length; i++) {
-            var contentAppend = document.createElement("div");
-            
+         for (let i = 7; i < data.list.length; i+=8) {
+            var weatherTxt = data.list[i].dt_txt;
+            var rain = data.list[i].weather[0].description;
+
+            var contentAppend = document.getElementById("weather-forecast");
+            var foreCastDiv = document.createElement("div");
+            foreCastDiv.setAttribute("style", "display:flex; flex-direction: column; align-items: center; line-height:8px; border: solid; border-radius: 12px; margin: 10px;")
+            var weatherTxtContent = document.createElement("p");
+            var rainTxtContent = document.createElement("p");
+
+            weatherTxtContent.textContent = weatherTxt;
+            rainTxtContent.textContent = rain;
+
+            foreCastDiv.appendChild(weatherTxtContent);
+            foreCastDiv.appendChild(rainTxtContent);
+
+            contentAppend.appendChild(foreCastDiv);
          };
 
 
