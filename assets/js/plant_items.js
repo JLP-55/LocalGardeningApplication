@@ -10,23 +10,22 @@ var saveToPlantingListBtn = document.querySelector("button");
 
 var backBtn = document.createElement("button");
 backBtn.setAttribute("id", "back-button");
-backBtn.setAttribute("class", "basis-3/4 inline-grid grid-cols-2 list-disc mb-6 border-2 border-emerald-600 rounded-lg bg-green-300 p-2");
-backBtn.setAttribute("style", "position:relative; top: 25px; height:auto; width: 90px; margin-bottom: 50px; border: solid; border-radius: 8px; background-color: pink;");
+backBtn.setAttribute("style", "padding: 1px; border: solid; border-radius: 8px; border-color: #B2002A; color: #B2002A; background-color: pink;");
 backBtn.textContent = "Back";
-document.querySelector("h2").appendChild(backBtn);
+document.querySelector("nav").appendChild(backBtn);
 backBtn.addEventListener("click", back);
 
-function back () {
+function back() {
     history.back();
 }
 
 
 
-function renderUserInput () {
+function renderUserInput() {
     fetch(KeyWordUserItem)
         .then(function (response) {
-        return response.json();
-    })
+            return response.json();
+        })
         .then(function (data) {
             console.log(data);
 
@@ -39,16 +38,17 @@ function renderUserInput () {
                 var displayImg = document.createElement("img");
                 var targetImg = data.default_image.small_url;
                 displayImg.setAttribute("src", targetImg);
+                displayImg.setAttribute("style", "border-radius: 0.5rem; place-content-center; display: flex; flex-basis: 50%;")
                 appendIndividualSearchItems.appendChild(displayImg);
             };
 
             // Generates plant name.
             var appendCommonName = document.createElement("h4");
-            appendCommonName.setAttribute("style", "font-weight:bold;")
+            appendCommonName.setAttribute("style", "font-weight:bold; margin-top: 1rem; margin-bottom: 1rem; font-size: 1.5rem; ")
             var commonName = (data.common_name);
             appendCommonName.textContent = commonName;
             appendIndividualSearchItems.appendChild(appendCommonName);
-            
+
             // Generates plant description.
             if (data.description != null || data.description != undefined) {
                 var appendPlantDescription = document.createElement("p");
@@ -56,10 +56,10 @@ function renderUserInput () {
                 appendPlantDescription.textContent = PlantDescription;
                 appendIndividualSearchItems.appendChild(appendPlantDescription);
             };
-            
+
             // Plant statistics section of code.
             if (data.attracts[0] != null || data.attracts[0] != undefined) {
-                var appendAttracts = document.createElement("p");
+                var appendAttracts = document.createElement("li");
                 // appendAttracts.setAttribute("style", "font-weight:bold;");
                 var attracts = data.attracts;
                 appendAttracts.textContent = "This plant will attract: " + attracts;
@@ -170,9 +170,9 @@ function renderUserInput () {
                 var appendPoisonousToHumans = document.createElement("li");
                 var poisonousToHumans = data.poisonous_to_humans;
                 if (poisonousToHumans == 0 || poisonousToHumans == false) {
-                    appendPoisonousToHumans.textContent = "This plant is not poisonous to humans" ;
+                    appendPoisonousToHumans.textContent = "This plant is not poisonous to humans";
                 } else if (poisonousToHumans == 1 || poisonousToHumans == true) {
-                    appendPoisonousToHumans.textContent = "This plant is poisonous to humans" ;
+                    appendPoisonousToHumans.textContent = "This plant is poisonous to humans";
                 };
                 appendPlantStatistics.appendChild(appendPoisonousToHumans);
             };
@@ -181,13 +181,13 @@ function renderUserInput () {
                 var appendPoisonousToPets = document.createElement("li");
                 var poisonousToPets = data.poisonous_to_pets;
                 if (poisonousToPets == 0 || poisonousToPets == false) {
-                    appendPoisonousToPets.textContent = "This plant is not poisonous to pets" ;
+                    appendPoisonousToPets.textContent = "This plant is not poisonous to pets";
                 } else if (poisonousToPets == 1 || poisonousToPets == true) {
-                    appendPoisonousToPets.textContent = "This plant is poisonous to pets" ;
+                    appendPoisonousToPets.textContent = "This plant is poisonous to pets";
                 };
                 appendPlantStatistics.appendChild(appendPoisonousToPets);
             };
-            
+
             // Plant needs section of code.
             // if (data.propagation !== null || data.variable !== undefined) {
             //     var appendAttracts = document.createElement("p");
@@ -206,7 +206,7 @@ function renderUserInput () {
             // } else {
 
             // };
-            
+
             // if (data.pruning_month !== null || data.variable !== undefined) {
             //     var appendAttracts = document.createElement("p");
             //     var variable = data
@@ -271,16 +271,17 @@ function renderUserInput () {
             // };
 
             // This function will save the id of the plant to local storage in an array to be used later by the weather/calendar api.
-            function savePlantItem () {
+            function savePlantItem() {
                 if (storedUserSelectedItems === null || storedUserSelectedItems === undefined) {
 
                 } else if (storedUserSelectedItems.length > 0) {
                     userSelectedItem = userSelectedItem.concat(storedUserSelectedItems);
                 };
-                
+
                 userSelectedItem.push(data.id);
                 localStorage.setItem("user-selected-items", JSON.stringify(userSelectedItem));
                 saveToPlantingListBtn.textContent = "Item saved";
+                saveToPlantingListBtn.setAttribute("style", "background-color:#f5c467;");
                 saveToPlantingListBtn.removeEventListener("click", savePlantItem);
             };
 
@@ -290,6 +291,7 @@ function renderUserInput () {
                     // Checks the id of the button against every value in the array in local storage.
                     if (storedUserSelectedItems[i] == saveToPlantingListBtn.getAttribute("id")) {
                         saveToPlantingListBtn.textContent = "Item saved";
+                        saveToPlantingListBtn.setAttribute("style", "background-color:#f5c467;");
                         saveToPlantingListBtn.removeEventListener("click", savePlantItem);
                         saveToPlantingListBtn.removeEventListener("click", renderSavedPlantItemsUponClick);
                     };
@@ -297,41 +299,41 @@ function renderUserInput () {
             };
 
             // This function will add the most recent user selected plant item to the page.
-            function renderSavedPlantItemsUponClick () {
+            function renderSavedPlantItemsUponClick() {
                 var plantItemId = saveToPlantingListBtn.getAttribute("id");
                 var plantItemApi = `https://perenual.com/api/species/details/${plantItemId}?key=${apiKey}`;
-                
+
                 fetch(plantItemApi)
-                .then(function (response) {
-                    return response.json();
-                })
-                .then (function (data) {
-                    var displayPlantItem = document.createElement("p");
-                    displayPlantItem.setAttribute("class", "display-individual-plant-item");
-                    displayPlantItem.textContent = data.common_name;
-                    appendUserSelectedPlantItems.appendChild(displayPlantItem);
-                    saveToPlantingListBtn.removeEventListener("click", renderSavedPlantItemsUponClick);
-                });
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(function (data) {
+                        var displayPlantItem = document.createElement("p");
+                        displayPlantItem.setAttribute("class", "display-individual-plant-item");
+                        displayPlantItem.textContent = data.common_name;
+                        appendUserSelectedPlantItems.appendChild(displayPlantItem);
+                        saveToPlantingListBtn.removeEventListener("click", renderSavedPlantItemsUponClick);
+                    });
             };
 
             // This function will render all the user saved plant items to the page.
-            function renderSavedPlantItemsUponLoad () {
+            function renderSavedPlantItemsUponLoad() {
                 var storedUserSelectedItems = JSON.parse(localStorage.getItem("user-selected-items"));
 
                 for (let i = 0; i < storedUserSelectedItems.length; i++) {
                     var plantItemId = storedUserSelectedItems[i];
                     var plantItemApi = `https://perenual.com/api/species/details/${plantItemId}?key=${apiKey}`;
-                    
+
                     fetch(plantItemApi)
-                    .then(function (response) {
-                        return response.json();
-                    })
-                    .then (function (data) {
-                        var displayPlantItem = document.createElement("p");
-                        displayPlantItem.setAttribute("class", "display-individual-plant-item");
-                        displayPlantItem.textContent = data.common_name;
-                        appendUserSelectedPlantItems.appendChild(displayPlantItem);
-                    });
+                        .then(function (response) {
+                            return response.json();
+                        })
+                        .then(function (data) {
+                            var displayPlantItem = document.createElement("p");
+                            displayPlantItem.setAttribute("class", "display-individual-plant-item");
+                            displayPlantItem.textContent = data.common_name;
+                            appendUserSelectedPlantItems.appendChild(displayPlantItem);
+                        });
                 };
             };
 
