@@ -16,6 +16,12 @@ backBtn.textContent = "Back";
 document.querySelector("h2").appendChild(backBtn);
 backBtn.addEventListener("click", back);
 
+// Clear button code
+var clearBtn = document.getElementById("clear-button");
+clearBtn.textContent = "Clear-saved-items";
+clearBtn.setAttribute("style", "visibility:hidden;");
+clearBtn.setAttribute("class", "basis-3/4 inline-grid grid-cols-2 list-disc mb-6 border-2 border-emerald-600 rounded-lg bg-green-300 p-2");
+
 function back () {
     history.back();
 }
@@ -33,6 +39,7 @@ function renderUserInput () {
             saveToPlantingListBtn.setAttribute("id", data.id);
             saveToPlantingListBtn.addEventListener("click", savePlantItem);
             saveToPlantingListBtn.addEventListener("click", renderSavedPlantItemsUponClick);
+            saveToPlantingListBtn.addEventListener("click", renderClearBtn);
 
             // Generates an image of the clicked plant.
             if (data.default_image != null || data.default_image != undefined) {
@@ -292,6 +299,7 @@ function renderUserInput () {
                         saveToPlantingListBtn.textContent = "Item saved";
                         saveToPlantingListBtn.removeEventListener("click", savePlantItem);
                         saveToPlantingListBtn.removeEventListener("click", renderSavedPlantItemsUponClick);
+                        saveToPlantingListBtn.removeEventListener("click", renderClearBtn);
                     };
                 };
             };
@@ -311,6 +319,7 @@ function renderUserInput () {
                     displayPlantItem.textContent = data.common_name;
                     appendUserSelectedPlantItems.appendChild(displayPlantItem);
                     saveToPlantingListBtn.removeEventListener("click", renderSavedPlantItemsUponClick);
+                    saveToPlantingListBtn.removeEventListener("click", renderClearBtn);
                 });
             };
 
@@ -340,6 +349,23 @@ function renderUserInput () {
             };
 
         });
-};
+
+        // Function to display the clear items button.
+        function renderClearBtn () {
+            if (JSON.parse(localStorage.getItem("user-selected-items")) !== null) {
+    
+                clearBtn.setAttribute("class", "basis-3/4 inline-grid grid-cols-2 list-disc mb-6 border-2 border-emerald-600 rounded-lg bg-green-300 p-2");
+                clearBtn.setAttribute("style", "visibility:visible; display:flex; height:45px; width: 150px; margin-bottom: 50px; border: solid; border-radius: 8px; background-color: pink;");
+                clearBtn.addEventListener("click", removeItems);
+                
+                function removeItems () {
+                    localStorage.removeItem("user-selected-items");
+                    appendUserSelectedPlantItems.setAttribute("style", "visibility:hidden;")
+                    // window.location.reload();
+                };
+            };
+        };
+        renderClearBtn();
+    };
 
 renderUserInput();
